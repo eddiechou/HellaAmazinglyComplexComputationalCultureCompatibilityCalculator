@@ -46,10 +46,12 @@ class CustomForm extends React.Component {
     return (
       <div className="container-fluid">
       <h2>custom text analysis</h2>
-      <p>Paste any text you like into the form below.
-        The minimum number of words needed to conduct an analysis is 100, 
-        but we recommend using a sample of 1000 words or more for greater accuracy.
+      <p>Paste any text you like into the form below.</p>
+      <p>
+        We recommend using a sample of 1200 words or more for greater accuracy, but the minimum number 
+        required to conduct an analysis is 200.
       </p>
+      <p>&nbsp;</p>
       <form className="custom" onSubmit={(e) => this.props.click === undefined ? this.sendForm(e) : this.props.click(e, this.state)}>
         <label>
           Who are you analyzing?

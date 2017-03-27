@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import $ from 'jquery';
+import About from './components/About.jsx';
 import Create from './components/Create.jsx';
 import LoginForm from './components/LoginForm.jsx';
 import SignupForm from './components/SignupForm.jsx';
@@ -71,7 +72,7 @@ class App extends React.Component {
 
     return (
       <Router>
-        <div>
+        <div className="container">
           <nav className="navbar navbar-inverse navbar-fixed-top">
             <div className="container">
               <div className="navbar-header">
@@ -81,7 +82,7 @@ class App extends React.Component {
                 <ul className="nav navbar-nav">
                   <li className="dropdown">
                   <a href="#" className="dropdown-toggle" data-toggle="dropdown" 
-                    role="button" aria-haspopup="true" aria-expanded="false">new analysis 
+                    role="button" aria-haspopup="true" aria-expanded="false">new analysis &nbsp;
                       <span className="caret"></span>
                   </a>
                     <ul className="dropdown-menu">
@@ -100,7 +101,7 @@ class App extends React.Component {
                 <li><div className="credit-photos">
                   powered by: 
                   <img id="footer-images" src={"/images/IBM-Watson-image.png"} />
-                  <img id="footer-images" src={"/images/twitterLogo.png"} />
+                  <img id="footer-images" src={"/images/Twitter_bird_logo_2012.svg.png"} />
                 </div></li>
                 </ul>
               </div>
@@ -112,8 +113,7 @@ class App extends React.Component {
               <span>&nbsp;&nbsp;&nbsp;</span>
               {this.state.spinner && <img id="spinner" className="header" src={"/images/spinner.gif"} />}
             </h1>
-            <p className="welcome">Welcome, {this.state.user}</p>
-            <Route path="/Home" />
+            <Route path="/Home" component={About}/>
             {!this.state.loggedIn && <Route path="/LoginForm" component={() => <LoginForm update={this.updateLoggedIn} />} />}
             {!this.state.loggedIn && <Route path="/SignUpForm" component={() => <SignupForm update={this.updateLoggedIn} />} />}
             <Route path="/TwitterSearch" component={() => <TwitterSearch toggleSpinner={this.toggleSpinner} />} />

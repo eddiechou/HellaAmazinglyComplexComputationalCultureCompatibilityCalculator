@@ -36,7 +36,7 @@ class TwitterSearch extends React.Component {
   render () {
     return (
       <div>
-      <h2>Enter your own input to analyze</h2>
+      <h2>public twitter analysis</h2>
       <form onSubmit={(e) => this.props.click === undefined ? this.sendForm(e) : this.props.click(e, this.state)}>
         <label>
           Analyze tweets from: 

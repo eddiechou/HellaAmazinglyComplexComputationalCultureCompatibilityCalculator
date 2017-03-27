@@ -30,7 +30,7 @@ class UserAnalyses extends React.Component {
           {this.state.data.length === 0 ? <div>You have no saved analyses.</div> : 
             this.state.data.map(e => {
               return this.props.click ? 
-                (<div key={e._id}><a name={e._id} onClick={this.props.click} >{e.person}</a></div>) :
+                (<div key={e._id}><a href="#" name={e._id} onClick={this.props.click} >{e.person}</a></div>) :
                 (<div key={e._id}><a href={`analyses/${e._id}`} >{e.person}</a></div>)
             })}
           </div>

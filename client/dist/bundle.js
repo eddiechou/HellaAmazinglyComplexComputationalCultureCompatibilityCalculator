@@ -41087,7 +41087,7 @@ var App = function (_React$Component) {
                       { className: 'credit-photos' },
                       'powered by:',
                       _react2.default.createElement('img', { id: 'footer-images', src: "/images/IBM-Watson-image.png" }),
-                      _react2.default.createElement('img', { id: 'footer-images', src: "/images/Twitter_bird_logo_2012.svg.png" })
+                      _react2.default.createElement('img', { id: 'footer-images', src: "/images/twitterLogo.png" })
                     )
                   )
                 )

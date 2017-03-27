@@ -101,7 +101,7 @@ class App extends React.Component {
                 <li><div className="credit-photos">
                   powered by: 
                   <img id="footer-images" src={"/images/IBM-Watson-image.png"} />
-                  <img id="footer-images" src={"/images/Twitter_bird_logo_2012.svg.png"} />
+                  <img id="footer-images" src={"/images/twitterLogo.png"} />
                 </div></li>
                 </ul>
               </div>

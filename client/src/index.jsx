@@ -5,19 +5,15 @@ import About from './components/About.jsx';
 import Create from './components/Create.jsx';
 import LoginForm from './components/LoginForm.jsx';
 import SignupForm from './components/SignupForm.jsx';
-import ComparisonChart from './components/ComparisonChart.jsx'
-import Analyses from './components/Analyses.jsx'
-import Public from './components/Public.jsx'
-import UserAnalyses from './components/UserAnalyses.jsx'
-import TwitterSearch from './components/TwitterSearch.jsx'
-import CustomForm from './components/CustomForm.jsx'
-import * as s from './serverCalls.js'
-
-import {
-  BrowserRouter as Router,
-  Route,
-  Link
-} from 'react-router-dom'
+import ComparisonChart from './components/ComparisonChart.jsx';
+import Analyses from './components/Analyses.jsx';
+import Public from './components/Public.jsx';
+import UserAnalyses from './components/UserAnalyses.jsx';
+import TwitterSearch from './components/TwitterSearch.jsx';
+import CustomForm from './components/CustomForm.jsx';
+import AuthService from './utils/AuthService';
+import * as s from './serverCalls.js';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 
 class App extends React.Component {
   constructor(props) {

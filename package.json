@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server/index.js",
-    "s": "nodemon server/index.js"
+    "s": "nodemon server/index.js --exec babel-node --presets react,es2015",
+    "build": "node_modules/.bin/webpack -p --watch"
   },
   "repository": {
     "type": "git",

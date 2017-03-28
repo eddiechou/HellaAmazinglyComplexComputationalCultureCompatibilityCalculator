@@ -12,18 +12,19 @@ import UserAnalyses from './components/UserAnalyses.jsx';
 import TwitterSearch from './components/TwitterSearch.jsx';
 import CustomForm from './components/CustomForm.jsx';
 import AuthService from './utils/AuthService';
+// import Auth0Login from './components/Auth0Login';
 import * as s from './serverCalls.js';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 
 // auth0 service
-const auth = new AuthService('9nCVTIeQudBFiwCrNSMKS6vLvAanErjC', 'jukejc.auth0.com');
+// const auth = new AuthService('9nCVTIeQudBFiwCrNSMKS6vLvAanErjC', 'jukejc.auth0.com');
 
-// validate authentication for private routes
-const requireAuth = (nextState, replace) => {
-  if (!auth.loggedIn()) {
-    replace({ pathname: '/login' })
-  }
-}
+// // validate authentication for private routes
+// const requireAuth = (nextState, replace) => {
+//   if (!auth.loggedIn()) {
+//     replace({ pathname: '/AuthLogin' })
+//   }
+// }
 
 class App extends React.Component {
   constructor(props) {

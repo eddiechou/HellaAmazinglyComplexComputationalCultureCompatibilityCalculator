@@ -24,7 +24,7 @@ var createSession = function(username, id, res) {
   });
 };
 
-/* Creates options array for Watson Tradoff API Problem object */ 
+/* Creates options array for Watson Tradeoff API Problem object */ 
 
 // Example options array
 // [

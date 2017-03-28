@@ -1,13 +1,12 @@
-# Project Name
+# Hella Amazingly Complex Computational Culture Compatibility Calculator
 
-> Analyze your online presence, another's online presence, or a custom block of text.
+> Analyze and sort people based on their personalities!
 
 ## Team
 
-  - Jeff Briner
-  - Tiffany Lin
-  - Laura Greenbaum
-  - Eugene Shifrin
+  - Andrew Alonis
+  - Jason Chambers
+  - Eddie Chou
 
 ## Table of Contents
 
@@ -26,10 +25,6 @@
 ## Requirements
 
 - Node 6.4.x
-- Redis 2.6.x
-- Postgresql 9.1.x
-- etc
-- etc
 
 ## Development
 

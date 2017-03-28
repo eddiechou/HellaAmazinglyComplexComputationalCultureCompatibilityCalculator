@@ -36,6 +36,10 @@ From within the root directory:
 npm install
 ```
 
+### Set up environment variables
+
+server/social/twitter.js uses environment variables. Set up a Twitter App and set your environment variables up for passport.
+
 ### Roadmap
 
 View the project roadmap [here](https://docs.google.com/spreadsheets/d/1ejRupbpYdg3ouqXrIVBCO0StrNhPwDblglppT5srMuA/pubhtml)

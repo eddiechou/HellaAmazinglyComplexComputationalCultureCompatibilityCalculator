@@ -12,19 +12,9 @@ import UserAnalyses from './components/UserAnalyses.jsx';
 import TwitterSearch from './components/TwitterSearch.jsx';
 import CustomForm from './components/CustomForm.jsx';
 import AuthService from './utils/AuthService';
-// import Auth0Login from './components/Auth0Login';
+// import AuthLogin from './components/AuthLogin';
 import * as s from './serverCalls.js';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
-
-// auth0 service
-// const auth = new AuthService('9nCVTIeQudBFiwCrNSMKS6vLvAanErjC', 'jukejc.auth0.com');
-
-// // validate authentication for private routes
-// const requireAuth = (nextState, replace) => {
-//   if (!auth.loggedIn()) {
-//     replace({ pathname: '/AuthLogin' })
-//   }
-// }
 
 class App extends React.Component {
   constructor(props) {
@@ -34,8 +24,12 @@ class App extends React.Component {
       user: 'Guest',
       loggedIn: false,
     }
-    this.updateLoggedIn = this.updateLoggedIn.bind(this);
-    this.toggleSpinner = this.toggleSpinner.bind(this);
+
+    ['updateLoggedIn', 'toggleSpinner', 'requireAuth'].forEach((method) => {
+      this[method] = this[method].bind(this);
+    });
+
+    this.auth = new AuthService('9nCVTIeQudBFiwCrNSMKS6vLvAanErjC', 'jukejc.auth0.com');
   }
 
   componentWillMount() {
@@ -47,6 +41,14 @@ class App extends React.Component {
         })
       }
     });
+  }
+
+  // validate authentication for private routes
+  requireAuth(nextState, replace) => {
+    console.log('i ran');
+    if (!this.auth.loggedIn()) {
+      // replace({ pathname: '/AuthLogin' })
+    }
   }
 
   toggleSpinner() {
@@ -120,7 +122,7 @@ class App extends React.Component {
               <span>&nbsp;&nbsp;&nbsp;</span>
               {this.state.spinner && <img id="spinner" className="header" src={"/images/spinner.gif"} />}
             </h1>
-            <Route path="/Home" component={About}/>
+            <Route path="/Home" component={About} onEnter={this.requireAuth}/>
             {!this.state.loggedIn && <Route path="/LoginForm" component={() => <LoginForm update={this.updateLoggedIn} />} />}
             {!this.state.loggedIn && <Route path="/SignUpForm" component={() => <SignupForm update={this.updateLoggedIn} />} />}
             <Route path="/TwitterSearch" component={() => <TwitterSearch toggleSpinner={this.toggleSpinner} />} />
@@ -136,6 +138,8 @@ class App extends React.Component {
 }
 
 ReactDOM.render(<App />, document.getElementById('app'));
+
+// <Route path="/AuthLogin" component={AuthLogin}/>
 
 //need to fix how far down the current analysis goes down
 //left justified

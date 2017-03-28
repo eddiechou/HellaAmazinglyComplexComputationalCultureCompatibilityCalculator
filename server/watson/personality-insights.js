@@ -20,8 +20,8 @@ const personalityInsights = new PersonalityInsightsV3({
   // PERSONALITY_INSIGHTS_PASSWORD env properties will be checked
   // After that, the SDK will fall back to the bluemix-provided
   // VCAP_SERVICES environment property
-  username: process.env.P_I_USERNAME,
-  password: process.env.P_I_PASSWORD,
+  username: 'myemailisthirtyninedigitslong@gmail.com', // process.env.P_I_USERNAME,
+  password: 'Carrerars17&', // process.env.P_I_PASSWORD,
   version_date: '2016-10-19',
 });
 

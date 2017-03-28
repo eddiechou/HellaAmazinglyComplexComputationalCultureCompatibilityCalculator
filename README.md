@@ -40,6 +40,8 @@ npm install
 
 server/social/twitter.js uses environment variables. Set up a Twitter App and set your environment variables up for passport.
 
+server/watson/personality-insights.js uses environment variables as well. You will need to set these up as well.
+
 ### Roadmap
 
 View the project roadmap [here](https://docs.google.com/spreadsheets/d/1ejRupbpYdg3ouqXrIVBCO0StrNhPwDblglppT5srMuA/pubhtml)

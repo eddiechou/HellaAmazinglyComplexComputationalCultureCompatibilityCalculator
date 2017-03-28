@@ -1,6 +1,6 @@
 # Project Name
 
-> Pithy project description
+> Analyze your online presence, another's online presence, or a custom block of text.
 
 ## Team
 
@@ -38,9 +38,7 @@
 From within the root directory:
 
 ```sh
-npm install -g bower
 npm install
-bower install
 ```
 
 ### Roadmap

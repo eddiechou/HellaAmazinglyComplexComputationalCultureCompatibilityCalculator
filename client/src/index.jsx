@@ -19,17 +19,19 @@ import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      spinner: false,
-      user: 'Guest',
-      loggedIn: false,
-    }
 
     ['updateLoggedIn', 'toggleSpinner', 'requireAuth'].forEach((method) => {
       this[method] = this[method].bind(this);
     });
 
     this.auth = new AuthService('9nCVTIeQudBFiwCrNSMKS6vLvAanErjC', 'jukejc.auth0.com');
+
+    this.state = {
+      spinner: false,
+      user: 'Guest',
+      loggedIn: false,
+    }
+
   }
 
   componentWillMount() {
@@ -44,11 +46,8 @@ class App extends React.Component {
   }
 
   // validate authentication for private routes
-  requireAuth(nextState, replace) => {
-    console.log('i ran');
-    if (!this.auth.loggedIn()) {
-      // replace({ pathname: '/AuthLogin' })
-    }
+  requireAuth(nextState, replace) {
+    return this.auth.loggedIn() ? true : false;
   }
 
   toggleSpinner() {
@@ -122,7 +121,7 @@ class App extends React.Component {
               <span>&nbsp;&nbsp;&nbsp;</span>
               {this.state.spinner && <img id="spinner" className="header" src={"/images/spinner.gif"} />}
             </h1>
-            <Route path="/Home" component={About} onEnter={this.requireAuth}/>
+            <Route path="/Home" component={About} />
             {!this.state.loggedIn && <Route path="/LoginForm" component={() => <LoginForm update={this.updateLoggedIn} />} />}
             {!this.state.loggedIn && <Route path="/SignUpForm" component={() => <SignupForm update={this.updateLoggedIn} />} />}
             <Route path="/TwitterSearch" component={() => <TwitterSearch toggleSpinner={this.toggleSpinner} />} />

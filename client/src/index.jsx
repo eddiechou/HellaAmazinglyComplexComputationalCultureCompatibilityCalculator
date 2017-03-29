@@ -18,7 +18,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
 
-    ['updateLoggedIn', 'toggleSpinner'].forEach((method) => {
+    ['toggleSpinner'].forEach((method) => {
       this[method] = this[method].bind(this);
     });
 
@@ -44,14 +44,6 @@ class App extends React.Component {
     this.setState({
       spinner : !this.state.spinner
     })
-  }
-
-  updateLoggedIn(username) {
-    username = username;
-    this.setState({
-      user: username,
-      loggedIn: true
-    });
   }
 
   render () {
@@ -99,8 +91,6 @@ class App extends React.Component {
               {this.state.spinner && <img id="spinner" className="header" src={"/images/spinner.gif"} />}
             </h1>
             <Route path="/Home" component={About}/>
-            {!this.state.loggedIn && <Route path="/LoginForm" component={() => <LoginForm update={this.updateLoggedIn} />} />}
-            {!this.state.loggedIn && <Route path="/SignUpForm" component={() => <SignupForm update={this.updateLoggedIn} />} />}
             <Route path="/TwitterSearch" component={() => <TwitterSearch toggleSpinner={this.toggleSpinner} />} />
             <Route path="/CustomForm" component={() => <CustomForm toggleSpinner={this.toggleSpinner}/>}/>
             <Route path="/Public" component={() => <Public toggleSpinner={this.toggleSpinner} />} />          

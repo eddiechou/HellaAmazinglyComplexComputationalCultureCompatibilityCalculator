@@ -1,13 +1,12 @@
-# Project Name
+# Hella Amazingly Complex Computational Culture Compatibility Calculator
 
-> Analyze your online presence, another's online presence, or a custom block of text.
+> Analyze and sort people based on their personalities!
 
 ## Team
 
-  - Jeff Briner
-  - Tiffany Lin
-  - Laura Greenbaum
-  - Eugene Shifrin
+  - Andrew Alonis
+  - Jason Chambers
+  - Eddie Chou
 
 ## Table of Contents
 
@@ -26,10 +25,6 @@
 ## Requirements
 
 - Node 6.4.x
-- Redis 2.6.x
-- Postgresql 9.1.x
-- etc
-- etc
 
 ## Development
 
@@ -40,6 +35,12 @@ From within the root directory:
 ```sh
 npm install
 ```
+
+### Set up environment variables
+
+server/social/twitter.js uses environment variables. Set up a Twitter App and set your environment variables up for passport.
+
+server/watson/personality-insights.js uses environment variables as well. You will need to set these up as well.
 
 ### Roadmap
 

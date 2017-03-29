@@ -56,6 +56,19 @@ app.get('/AuthLogin', (req, res) => {
   res.render('login', { env: process.env });
 });
 
+app.get('/AuthLogout', function(req, res){
+  req.logout();
+  res.redirect('/Home');
+});
+
+app.get('/callback',
+  passport.authenticate('auth0', { failureRedirect: '/failed-login' }),
+  function(req, res) {
+    console.log(req.user);
+    res.redirect(req.session.returnTo || '/');
+});
+
+
 /****************/
 /**** NATIVE ****/
 /****************/

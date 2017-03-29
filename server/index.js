@@ -11,7 +11,10 @@ var db = require('../database/config');
 var dbHelpers = require('../database/helpers/request_helpers');
 var path = require('path');
 var secret = require('./secrets');
+
+// auth0 passport auth //
 var strategy = require('./social/auth0');
+
 //-------------------------------------------------------------//
 
 var app = express();
@@ -43,6 +46,14 @@ app.get('/twitterProfile/*', tw.testAnalysis);
 
 app.post('/analysis', watsonHelpers.analyzeProfile);
 app.post('/tradeoff', tradeoffHelpers.analyzeTradeoffs);
+
+/****************/
+/**** Auth0 ****/
+/****************/
+
+app.get('/LoginForm', (req, res) => {
+  res.render('login', { env: process.env });
+});
 
 /****************/
 /**** NATIVE ****/

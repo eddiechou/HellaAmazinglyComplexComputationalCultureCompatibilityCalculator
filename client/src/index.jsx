@@ -47,9 +47,6 @@ class App extends React.Component {
     })
   }
 
-  //the Create style is for illustrative purposes
-    //to pass in props:
-    // <Route path="/Create" render={() => <Create {...this.state} /> } />
   updateLoggedIn(username) {
     username = username;
     this.setState({
@@ -57,15 +54,6 @@ class App extends React.Component {
       loggedIn: true
     });
   }
-
-
-// =======
-//             {!this.state.loggedIn && <Route path="/LoginForm" render={() => <LoginForm update={this.updateLoggedIn} />} />}
-//             {!this.state.loggedIn && <Route path="/SignUpForm" render={() => <SignupForm update={this.updateLoggedIn} />} />}
-//             <Route path="/Create" render={() => <Create ownTwitter={true} {...this.state} toggleSpinner={this.toggleSpinner} /> } />
-//             <Route path="/Public" render={() => <Public toggleSpinner={this.toggleSpinner} /> }/>          
-// >>>>>>> implemented spinner
-
 
   render () {
 
@@ -128,20 +116,3 @@ class App extends React.Component {
 }
 
 ReactDOM.render(<App />, document.getElementById('app'));
-
-//need to fix how far down the current analysis goes down
-//left justified
-//logo on the upper right of the page
-
- // <button type="button" className="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                //   <span className="sr-only">Toggle Navigation</span>
-                //   <span className="icon-bar"></span>
-                //   <span className="icon-bar"></span>
-                //   <span className="icon-bar"></span>
-                // </button>
-            // Datashrink interacts with Watson and Twitter to give you an in-depth personality analysis of yourself. 
-            // Datashrink operates by obtainnig all of a user's tweets from Twitter, these tweets are sent to Watson 
-            // which does an in-depth personality analysis, which is displayed to you in a histogram.  
-          // <footer id="footer" className="panel-footer">
-           
-          // </footer>

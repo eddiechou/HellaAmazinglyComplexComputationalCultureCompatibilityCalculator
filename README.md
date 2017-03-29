@@ -4,9 +4,16 @@
 
 ## Team
 
-  - Andrew Alonis
+  - Jeff Briner
+  - Tiffany Lin
+  - Laura Greenbaum
+  - Eugene Shifrin
+  
+  ~ Legacy Continuation
+  
   - Jason Chambers
   - Eddie Chou
+  - Andrew Alonis
 
 ## Table of Contents
 

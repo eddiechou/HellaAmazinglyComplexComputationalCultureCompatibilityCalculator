@@ -11,8 +11,8 @@ import Public from './components/Public.jsx';
 import UserAnalyses from './components/UserAnalyses.jsx';
 import TwitterSearch from './components/TwitterSearch.jsx';
 import CustomForm from './components/CustomForm.jsx';
-import AuthService from './utils/AuthService';
-import AuthLogin from './components/AuthLogin';
+// import AuthService from './utils/AuthService';
+// import AuthLogin from './components/AuthLogin';
 import * as s from './serverCalls.js';
 import { BrowserRouter as Router, Route, Link, Redirect } from 'react-router-dom';
 
@@ -20,11 +20,11 @@ class App extends React.Component {
   constructor(props) {
     super(props);
 
-    ['updateLoggedIn', 'toggleSpinner', 'requireAuth'].forEach((method) => {
+    ['updateLoggedIn', 'toggleSpinner'].forEach((method) => {
       this[method] = this[method].bind(this);
     });
 
-    this.auth = new AuthService('9nCVTIeQudBFiwCrNSMKS6vLvAanErjC', 'jukejc.auth0.com');
+    // this.auth = new AuthService('9nCVTIeQudBFiwCrNSMKS6vLvAanErjC', 'jukejc.auth0.com');
 
     this.state = {
       spinner: false,
@@ -45,11 +45,11 @@ class App extends React.Component {
     });
   }
 
-  // validate authentication for private routes
-  requireAuth(nextState, replace) {
-    console.log(this.auth, this.auth.loggedIn());
-    return this.auth.loggedIn() ? true : false;
-  }
+  // // validate authentication for private routes
+  // requireAuth(nextState, replace) {
+  //   console.log(this.auth, this.auth.loggedIn());
+  //   return this.auth.loggedIn() ? true : false;
+  // }
 
   toggleSpinner() {
     this.setState({
@@ -128,14 +128,7 @@ class App extends React.Component {
             <Route path="/TwitterSearch" component={() => <TwitterSearch toggleSpinner={this.toggleSpinner} />} />
             <Route path="/CustomForm" component={() => <CustomForm toggleSpinner={this.toggleSpinner}/>}/>
             <Route path="/Public" component={() => <Public toggleSpinner={this.toggleSpinner} />} />          
-            <Route exact path="/User" render={() => (
-              this.requireAuth ? (
-                <Redirect to="/AuthLogin"/>
-              ) : (
-                <UserAnalyses/>
-              )
-            )}/>
-            <Route path="/AuthLogin" component={AuthLogin}/>
+            <Route path="/User" component={UserAnalyses}/>
             <Route path="/analyses/:id" render={(nativeProps) => <Analyses nativeProps={nativeProps} toggleSpinner={this.toggleSpinner} /> } />
           </div>
         </div>
@@ -145,8 +138,6 @@ class App extends React.Component {
 }
 
 ReactDOM.render(<App />, document.getElementById('app'));
-
-// <Route path="/AuthLogin" component={AuthLogin}/>
 
 //need to fix how far down the current analysis goes down
 //left justified

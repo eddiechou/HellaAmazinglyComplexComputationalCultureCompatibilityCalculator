@@ -13,6 +13,9 @@ var getDilemma = function(params) {
       console.log('Error in getDilemma:', error);
     } else {
       console.log('getDilemma resolution: ', JSON.stringify(resolution, null, 2));
+      // Store the dilemma we get back in the database
+
+      
     }
   });
 };

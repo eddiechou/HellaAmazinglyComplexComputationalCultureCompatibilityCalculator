@@ -1,5 +1,6 @@
 var Analysis = require('../../database/models/analyses');
 var AnalysesTrait = require('../../database/models/analyses_traits');
+var tradeoff = require('./tradeoff');
 
 // Example options array
 // [
@@ -127,7 +128,7 @@ var analyzeTradeoffs = function(req, res) {
   };
   var traitParams = req.traitParams || defaultTraitParams;
 
-  // Populate with columns and options
+  // Populate the Problem Object with columns and options properties
   createColumns(traitParams)
   .then(function(columns) {
     problemObj.columns = columns;
@@ -136,6 +137,11 @@ var analyzeTradeoffs = function(req, res) {
   })
   .then(function(options) {
     problemObj.options = options;
+
+    // Send problem object to the Watson Tradeoff API
+    tradeoff.getDilemma(problemObj);
+
+    // TODO (Eddie): Send a proper response back to the client
     res.send(JSON.stringify(problemObj));
   });
 };

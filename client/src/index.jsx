@@ -14,7 +14,7 @@ import CustomForm from './components/CustomForm.jsx';
 import AuthService from './utils/AuthService';
 import AuthLogin from './components/AuthLogin';
 import * as s from './serverCalls.js';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Link, Redirect } from 'react-router-dom';
 
 class App extends React.Component {
   constructor(props) {
@@ -47,6 +47,7 @@ class App extends React.Component {
 
   // validate authentication for private routes
   requireAuth(nextState, replace) {
+    console.log(this.auth, this.auth.loggedIn());
     return this.auth.loggedIn() ? true : false;
   }
 
@@ -121,13 +122,19 @@ class App extends React.Component {
               <span>&nbsp;&nbsp;&nbsp;</span>
               {this.state.spinner && <img id="spinner" className="header" src={"/images/spinner.gif"} />}
             </h1>
-            <Route path="/Home" component={About} />
+            <Route path="/Home" component={About}/>
             {!this.state.loggedIn && <Route path="/LoginForm" component={() => <LoginForm update={this.updateLoggedIn} />} />}
             {!this.state.loggedIn && <Route path="/SignUpForm" component={() => <SignupForm update={this.updateLoggedIn} />} />}
             <Route path="/TwitterSearch" component={() => <TwitterSearch toggleSpinner={this.toggleSpinner} />} />
             <Route path="/CustomForm" component={() => <CustomForm toggleSpinner={this.toggleSpinner}/>}/>
             <Route path="/Public" component={() => <Public toggleSpinner={this.toggleSpinner} />} />          
-            <Route path="/User" component={UserAnalyses}/>
+            <Route exact path="/User" render={() => (
+              this.requireAuth ? (
+                <Redirect to="/AuthLogin"/>
+              ) : (
+                <UserAnalyses/>
+              )
+            )}/>
             <Route path="/AuthLogin" component={AuthLogin}/>
             <Route path="/analyses/:id" render={(nativeProps) => <Analyses nativeProps={nativeProps} toggleSpinner={this.toggleSpinner} /> } />
           </div>

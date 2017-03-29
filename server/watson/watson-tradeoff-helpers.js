@@ -27,55 +27,43 @@ var AnalysesTrait = require('../../database/models/analyses_traits');
 var createOptions = function(callback) {
   var options = [];
 
+  var promises;
   // Query for the analyses we want (all public profiles FOR NOW)
   Analysis.find({private: false})
   .exec(function(err, analysesArray) {
     if (err) { 
       res.status(500).send(JSON.stringify({error: 'Databases failed to query'})); 
     } else if (analysesArray) {
-      console.log('analyses array is: ', analysesArray);
 
-      // For each analysis returned
-      for (var i = 0; i < analysesArray.length; i++) {
-        // Set up key and name
-        var obj = {
-          key: analysesArray[i]._id,
-          name: analysesArray[i].person
-        };
+      promises = analysesArray.map(function(analysis) {
+        // return a promise for each analysis
+        return new Promise((resolve, reject) => {
+          // Set up key and name
+          var obj = {
+            key: analysis._id,
+            name: analysis.person
+          };
 
-        // Set up values
-        var values = {};
-        // Query analyses_traits for all traits with this analysis_id
-        // return analyses_traits in callback
-
-        // Using an IFFE (TODO: find another way to check when all the 
-        // queries are done!)
-        (function (i) {
-          AnalysesTrait.find({analysis_id: analysesArray[i]._id})
+          // Set up values object
+          var values = {};
+          // Query analyses_traits for all traits with this analysis_id
+          AnalysesTrait.find({analysis_id: analysis._id})
           .exec(function(err, analysisTraits) {
             if (err) {
               console.log('AnalysesTrait.find() err', err);
+              reject(err);
             } else if (analysisTraits) {
               for (var j = 0; j < analysisTraits.length; j++) {
-                // console.log('analysis trait: ', analysisTraits[j]);
                 values[analysisTraits[j].trait_id] = analysisTraits[j].percentile;
               }
             }
-            // console.log('>> options', options);
-          })
-          .then(function() {
-            console.log('in then');
             obj.values = values;
             options.push(obj);
-            console.log('i:', i);
-            console.log('analysesArray.length -1 ', analysesArray.length - 1);
-            if (i === analysesArray.length - 1) {
-              console.log('in the if');
-              callback(options);
-            }
+            resolve();
           });
-        })(i);
-      }
+        });
+      });
+      Promise.all(promises).then(() => callback(options));
     }
   });
 };

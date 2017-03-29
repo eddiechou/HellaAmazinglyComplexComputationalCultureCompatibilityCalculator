@@ -88,6 +88,7 @@ class App extends React.Component {
                 </div></li>
                 </ul>
               </div>
+              
             </div>
           </nav>
           <img id="datashrink" src={"/images/datashrink_360.jpg"} />

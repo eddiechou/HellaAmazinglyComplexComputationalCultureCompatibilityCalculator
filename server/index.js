@@ -60,8 +60,9 @@ app.get('/AuthLogout', function(req, res){
 });
 
 app.get('/callback',
-  passport.authenticate('auth0', { failureRedirect: '/url-if-something-fails' }),
+  passport.authenticate('auth0', { failureRedirect: '/failed-login' }),
   function(req, res) {
+    console.log(req.user.emails[0].value.email);  
     res.redirect(req.session.returnTo || '/');
   });
 

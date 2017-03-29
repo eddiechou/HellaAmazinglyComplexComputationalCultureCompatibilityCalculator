@@ -6,7 +6,6 @@ var UsersSchema = mongoose.Schema({
   email: String,
   password: String,
   salt: String
-  //date is created automatically as apart of mongodb, accessed by the _id object, should we implement our own date for this?
 });
 
 UsersSchema.pre('save', function(next) {

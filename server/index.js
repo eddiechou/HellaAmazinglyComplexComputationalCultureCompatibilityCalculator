@@ -3,12 +3,13 @@ var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
 var expressSession = require('express-session');
 var watsonHelpers = require('./watson/watson-helpers');
+var tradeoffHelpers = require('./watson/watson-tradeoff-helpers');
 var passport = require('passport');
 var ensureLogIn = require('connect-ensure-login').ensureLoggedIn();
 var tw = require('./social/twitter.js');
 var db = require('../database/config');
 var dbHelpers = require('../database/helpers/request_helpers');
-var path = require('path')
+var path = require('path');
 var secret = require('./secrets');
 //-------------------------------------------------------------//
 
@@ -40,6 +41,7 @@ app.get('/twitterProfile/*', tw.testAnalysis);
 /****************/
 
 app.post('/analysis', watsonHelpers.analyzeProfile);
+app.post('/tradeoff', tradeoffHelpers.analyzeTradeoffs);
 
 /****************/
 /**** NATIVE ****/
@@ -54,7 +56,7 @@ app.get('/publicanalyses', dbHelpers.getPublicAnalyses);
 app.get('/useranalyses', dbHelpers.getUserAnalyses);
 
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '../client/dist/index.html'))
+  res.sendFile(path.join(__dirname, '../client/dist/index.html'));
 });
 
 app.listen(process.env.PORT || 3000, function() {

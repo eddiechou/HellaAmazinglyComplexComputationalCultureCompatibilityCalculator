@@ -55,8 +55,13 @@ var createOptions = function(callback) {
                 console.log('AnalysesTrait.find() err', err);
                 reject(err);
               } else if (analysisTraits) {
+                // Add each analysisTrait to the values object
                 for (var j = 0; j < analysisTraits.length; j++) {
-                  values[analysisTraits[j].trait_id] = analysisTraits[j].percentile.valueOf();
+                  // TEMPORARILY FILTER to minimize results:
+                  // Will only get big5 traits
+                  if (analysisTraits[j].trait_id.charAt(0) === 'b') {
+                    values[analysisTraits[j].trait_id] = analysisTraits[j].percentile.valueOf();
+                  }
                 }
               }
               obj.values = values;
@@ -72,7 +77,6 @@ var createOptions = function(callback) {
     });
   });
 };
-
 
 const defaultTraitParams = [ {key: 'big5_openness', goal: 'max', full_name: 'Openness' },
   {key: 'big5_conscientiousness', goal: 'max', full_name: 'Conscientiousness' },

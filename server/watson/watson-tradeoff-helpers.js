@@ -77,10 +77,16 @@ var createOptions = function(callback) {
 // Sends a POST request with a Problem object to the Watson Tradeoff API
 // Problem object contains: subject, columns, and options
 var analyzeTradeoffs = function(req, res) {
-
+  var problemObj = {
+    subject: 'personalities', 
+    columns: null, 
+    options: null
+  };
+  // Populate with columns and options
   createOptions(function(options) {
-    console.log(options);
-    res.send(JSON.stringify(options));
+    console.log('return value from createOptions: ', options);
+    problemObj.options = options;
+    res.send(JSON.stringify(problemObj));
   });
 };
 

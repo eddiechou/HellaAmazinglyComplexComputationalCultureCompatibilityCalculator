@@ -11,8 +11,6 @@ import Public from './components/Public.jsx';
 import UserAnalyses from './components/UserAnalyses.jsx';
 import TwitterSearch from './components/TwitterSearch.jsx';
 import CustomForm from './components/CustomForm.jsx';
-// import AuthService from './utils/AuthService';
-// import AuthLogin from './components/AuthLogin';
 import * as s from './serverCalls.js';
 import { BrowserRouter as Router, Route, Link, Redirect } from 'react-router-dom';
 
@@ -23,8 +21,6 @@ class App extends React.Component {
     ['updateLoggedIn', 'toggleSpinner'].forEach((method) => {
       this[method] = this[method].bind(this);
     });
-
-    // this.auth = new AuthService('9nCVTIeQudBFiwCrNSMKS6vLvAanErjC', 'jukejc.auth0.com');
 
     this.state = {
       spinner: false,
@@ -44,12 +40,6 @@ class App extends React.Component {
       }
     });
   }
-
-  // // validate authentication for private routes
-  // requireAuth(nextState, replace) {
-  //   console.log(this.auth, this.auth.loggedIn());
-  //   return this.auth.loggedIn() ? true : false;
-  // }
 
   toggleSpinner() {
     this.setState({

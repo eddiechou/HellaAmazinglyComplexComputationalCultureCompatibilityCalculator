@@ -111,12 +111,6 @@ var createColumns = function(traitParams) {
   });
 };
 
-// TODO (Eddie): Right now, it only sends back the options array as a response,
-// still need to:
-// 1) create the whole Problem object (DONE)
-// 2) send whole Problem object to Watson Tradeoff API (DONE)
-// 3) deal with result
-
 // Sends a POST request with a Problem object to the Watson Tradeoff API
 // Problem object contains: subject, columns, and options
 var analyzeTradeoffs = function(req, res) {

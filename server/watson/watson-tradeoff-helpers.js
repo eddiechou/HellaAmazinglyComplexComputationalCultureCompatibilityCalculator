@@ -54,7 +54,7 @@ var createOptions = function(callback) {
               reject(err);
             } else if (analysisTraits) {
               for (var j = 0; j < analysisTraits.length; j++) {
-                values[analysisTraits[j].trait_id] = analysisTraits[j].percentile;
+                values[analysisTraits[j].trait_id] = analysisTraits[j].percentile.valueOf();
               }
             }
             obj.values = values;

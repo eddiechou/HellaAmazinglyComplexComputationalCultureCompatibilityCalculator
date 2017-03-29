@@ -21,7 +21,8 @@ var app = express();
 
 app.use(express.static(__dirname + '/../client/dist'));
 
-app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'jade');
 
 app.use(cookieParser(secret));
 app.use(bodyParser.json());
@@ -51,7 +52,7 @@ app.post('/tradeoff', tradeoffHelpers.analyzeTradeoffs);
 /**** Auth0 ****/
 /****************/
 
-app.get('/LoginForm', (req, res) => {
+app.get('/AuthLogin', (req, res) => {
   res.render('login', { env: process.env });
 });
 

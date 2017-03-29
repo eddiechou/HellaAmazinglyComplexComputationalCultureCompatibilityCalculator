@@ -113,8 +113,8 @@ var createColumns = function(traitParams) {
 
 // TODO (Eddie): Right now, it only sends back the options array as a response,
 // still need to:
-// 1) create the whole Problem object 
-// 2) send whole Problem object to Watson Tradeoff API
+// 1) create the whole Problem object (DONE)
+// 2) send whole Problem object to Watson Tradeoff API (DONE)
 // 3) deal with result
 
 // Sends a POST request with a Problem object to the Watson Tradeoff API
@@ -126,13 +126,14 @@ var analyzeTradeoffs = function(req, res) {
     columns: null, 
     options: null
   };
+
+  // TODO (Eddie): Set up middleware to parse data from client to create req.traitParams
   var traitParams = req.traitParams || defaultTraitParams;
 
   // Populate the Problem Object with columns and options properties
   createColumns(traitParams)
   .then(function(columns) {
     problemObj.columns = columns;
-    // Todo: Get req.traitParams
     return createOptions();
   })
   .then(function(options) {

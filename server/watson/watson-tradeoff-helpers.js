@@ -73,53 +73,39 @@ var createOptions = function(callback) {
   });
 };
 
-var createColumns = function(callback) {
-  return new Promise((resolve, reject) => {
 
-    // Test columns
-    var columns = [
-      {
-        "key": "facet_adventurousness",
-        "type": "numeric",
-        "goal": "max",
-        "is_objective": true,
-        "full_name": "Adventuresness",
-        "range": {
-          "low": 0,
-          "high": 100
+const defaultTraitParams = [ {key: 'big5_openness', goal: 'max', full_name: 'Openness' },
+  {key: 'big5_conscientiousness', goal: 'max', full_name: 'Conscientiousness' },
+  {key: 'big5_extraversion', goal: 'max', full_name: 'Extraversion' },
+  {key: 'big5_agreeableness', goal: 'max', full_name: 'Adventurousness' },
+  {key: 'big5_neuroticism', goal: 'max', full_name: 'Neuroticism' }
+];
+
+// traitParams looks like defaultTraitParams above
+var createColumns = function(traitParams) {
+  return new Promise((resolve, reject) => {
+    
+    var columns = [];
+    traitParams.forEach(function(trait) {
+      var column = {
+        'key': trait.key,
+        'type': 'numeric',
+        'goal': trait.goal,
+        'is_objective': true,
+        'full_name': trait.full_name,
+        'range': {
+          'low': 0,
+          'high': 100
         },
-        "format": "number:0"
-      },
-      {
-        "key": "facet_emotionality",
-        "type": "numeric",
-        "goal": "min",
-        "is_objective": true,
-        "full_name": "Emotionality",
-        "format": "number:0",
-        "range": {
-          "low": 0,
-          "high": 100
-        }
-      },
-      {
-        "key": "facet_intellect",
-        "type": "numeric",
-        "goal": "max",
-        "is_objective": true,
-        "full_name": "Intellect",
-        "format": "number:0",
-        "range": {
-          "low": 0,
-          "high": 100
-        }
-      },
-    ];
+        'format': 'number:0'
+      };
+      columns.push(column);
+    });
 
     resolve(columns);
-
   });
 };
+
 
 // TODO (Eddie): Right now, it only sends back the options array as a response,
 // still need to:
@@ -130,15 +116,21 @@ var createColumns = function(callback) {
 // Sends a POST request with a Problem object to the Watson Tradeoff API
 // Problem object contains: subject, columns, and options
 var analyzeTradeoffs = function(req, res) {
+
+  console.log('before call defaultTraitParams', defaultTraitParams);
+
   var problemObj = {
     subject: 'personalities', 
     columns: null, 
     options: null
   };
+  var params = req.traitParams || defaultTraitParams;
+
   // Populate with columns and options
-  createColumns()
+  createColumns(defaultTraitParams)
   .then(function(columns) {
     problemObj.columns = columns;
+    // Todo: Get req.traitParams
     return createOptions();
   })
   .then(function(options) {

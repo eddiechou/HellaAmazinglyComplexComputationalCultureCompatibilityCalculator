@@ -1,5 +1,6 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> (feat) added auth0.js file for auth0 lock widget
 // // src/views/Main/Login/Login.js
@@ -48,3 +49,6 @@ export default class AuthLogin extends React.Component {
 =======
 // export default AuthLogin;
 >>>>>>> (feat) added auth0.js file for auth0 lock widget
+=======
+
+>>>>>>> (feat) Added auth login route to router

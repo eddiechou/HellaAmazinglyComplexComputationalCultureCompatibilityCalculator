@@ -66,6 +66,9 @@ app.get('/callback',
     res.redirect(req.session.returnTo || '/');
   });
 
+app.get('/LoggedIn', (req, res) => {
+  req.user ? res.send('logged in') : res.send('not logged in');
+})
 
 /****************/
 /**** NATIVE ****/

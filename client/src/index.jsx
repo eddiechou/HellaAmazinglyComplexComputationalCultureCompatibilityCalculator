@@ -30,13 +30,12 @@ class App extends React.Component {
 
   }
 
-  componentWillMount() {
-    s.serverGet('session').then((e) => {
-      if (e.data.username) {
+  componentDidMount() {
+    s.serverGet('checkLoggedIn').then(({ data }) => {
+      if (data === 'logged in') {
         this.setState({
-          user: e.data.username,
           loggedIn: true
-        })
+        });
       }
     });
   }
@@ -83,7 +82,6 @@ class App extends React.Component {
                 </ul>
                 <ul className="nav navbar-nav navbar-right">
                   {!this.state.loggedIn && <li><a href="/AuthLogin">log in</a></li> }
-                  {!this.state.loggedIn && <li><Link to="/SignUpForm">sign up</Link></li> }
                   {this.state.loggedIn && <li><a href='\logout'>logout</a></li> }
                 <li><div className="credit-photos">
                   powered by: 

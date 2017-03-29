@@ -1,1 +1,1 @@
-curl -X POST --user 3b7f3f53-8a46-4bab-b19a-5460a95efdf4:PqJSUNnQ2Onv --header "Content-Type: application/json" --data @test2.json "https://gateway.watsonplatform.net/tradeoff-analytics/api/v1/dilemmas?generate_visualization=true"
+curl -X POST --user 3b7f3f53-8a46-4bab-b19a-5460a95efdf4:PqJSUNnQ2Onv --header "Content-Type: application/json" --data @test2.json "https://gateway.watsonplatform.net/tradeoff-analytics/api/v1/dilemmas"

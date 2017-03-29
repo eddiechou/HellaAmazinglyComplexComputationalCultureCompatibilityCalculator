@@ -24,6 +24,18 @@
         "format": "number:0",
         "goal": "max",
         "is_objective": true
+      },
+      {
+        "type": "numeric",
+        "key": "big5_conscientiousness",
+        "full_name": "Openness",
+        "range": {
+          "low": 0,
+          "high": 100
+        },
+        "format": "number:0",
+        "goal": "max",
+        "is_objective": true
       }
     ],
     "subject": "personalities",
@@ -143,6 +155,64 @@
           "need_self_expression": 0.91263660578907,
           "value_hedonism": 0.6737609415364572
         }
+      },
+      {
+        "key": "58dbf4e9e420c77037fd2cb7",
+        "name": "@elonmusk",
+        "values": {
+          "facet_adventurousness": 0.9542118877110954,
+          "facet_artistic_interests": 0.3448847654575429,
+          "facet_emotionality": 0.17245102177047333,
+          "facet_imagination": 0.7419178212261826,
+          "facet_intellect": 0.9010401086042525,
+          "facet_liberalism": 0.7246813243870578,
+          "big5_openness": 0.6096839731819919,
+          "facet_achievement_striving": 0.6548090761397312,
+          "facet_cautiousness": 0.7444597415841925,
+          "facet_dutifulness": 0.6069909781281204,
+          "facet_self_discipline": 0.68675632897961,
+          "facet_orderliness": 0.5367799796312233,
+          "facet_self_efficacy": 0.6977178463289606,
+          "big5_conscientiousness": 0.7205432574511972,
+          "facet_activity_level": 0.6431958230421004,
+          "facet_assertiveness": 0.5500074848555241,
+          "facet_cheerfulness": 0.1309169913423115,
+          "facet_excitement_seeking": 0.5115439002618777,
+          "facet_friendliness": 0.22082379300884653,
+          "facet_gregariousness": 0.040348956349541554,
+          "big5_extraversion": 0.17673117209047845,
+          "facet_altruism": 0.4353351811315867,
+          "facet_cooperation": 0.7142002212462266,
+          "facet_modesty": 0.22802974873673298,
+          "facet_morality": 0.2802733148740383,
+          "facet_sympathy": 0.3059364075978914,
+          "facet_trust": 0.7206553831414559,
+          "big5_agreeableness": 0.049738689701793126,
+          "facet_anger": 0.41291504959862896,
+          "facet_anxiety": 0.33172199330428426,
+          "facet_depression": 0.6220494464046453,
+          "facet_immoderation": 0.08974625308431605,
+          "facet_self_consciousness": 0.7282192110344271,
+          "facet_vulnerability": 0.31858945057262517,
+          "big5_neuroticism": 0.751743219246207,
+          "need_challenge": 0.4725465923420546,
+          "need_closeness": 0.030382148212070026,
+          "need_curiosity": 0.38269599263381915,
+          "need_excitement": 0.2938580237656799,
+          "need_harmony": 0.13598751629034583,
+          "need_ideal": 0.5580026028370971,
+          "need_liberty": 0.3397984989224589,
+          "need_love": 0.12823900004032918,
+          "need_practicality": 0.7390292665823939,
+          "need_self_expression": 0.2038474128370351,
+          "need_stability": 0.21422986734498667,
+          "need_structure": 0.4676468669285968,
+          "value_conservation": 0.08477965936877546,
+          "value_openness_to_change": 0.22657168400505823,
+          "value_hedonism": 0.1653763078893563,
+          "value_self_enhancement": 0.38056009906086685,
+          "value_self_transcendence": 0.10830036517364783
+        }
       }
     ]
   },
@@ -166,6 +236,33 @@
               {
                 "key": "big5_openness",
                 "difference": 0.19
+              },
+              {
+                "key": "big5_conscientiousness",
+                "difference": 0.07
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "solution_ref": "58dbf4e9e420c77037fd2cb7",
+        "status": "EXCLUDED",
+        "excluded_by": [
+          {
+            "solution_ref": "58db04f9330cff536b1ae546",
+            "objectives": [
+              {
+                "key": "big5_extraversion",
+                "difference": 0.58
+              },
+              {
+                "key": "big5_openness",
+                "difference": 0.29
+              },
+              {
+                "key": "big5_conscientiousness",
+                "difference": 0.26
               }
             ]
           }

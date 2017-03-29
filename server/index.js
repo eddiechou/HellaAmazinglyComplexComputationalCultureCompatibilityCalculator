@@ -11,6 +11,7 @@ var db = require('../database/config');
 var dbHelpers = require('../database/helpers/request_helpers');
 var path = require('path');
 var secret = require('./secrets');
+var strategy = require('./social/auth0');
 //-------------------------------------------------------------//
 
 var app = express();

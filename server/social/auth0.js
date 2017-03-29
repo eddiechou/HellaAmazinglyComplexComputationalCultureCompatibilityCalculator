@@ -1,13 +1,12 @@
 var passport = require('passport');
 var Auth0Strategy = require('passport-auth0');
 
-console.log(process.env.AUTH0_DOMAIN, process.env.AUTH0_CLIENT_ID, process.env.AUTH0_CLIENT_SECRET);
 // Configure Passport to use Auth0
 var strategy = new Auth0Strategy({
     domain:       process.env.AUTH0_DOMAIN,
     clientID:     process.env.AUTH0_CLIENT_ID,
     clientSecret: process.env.AUTH0_CLIENT_SECRET,
-    callbackURL:  '/callback'
+    callbackURL:  process.env.AUTH0_CALLBACK_URL || 'http://localhost:3000/callback'
   }, function(accessToken, refreshToken, extraParams, profile, done) {
     // accessToken is the token to call Auth0 API (not needed in the most cases)
     // extraParams.id_token has the JSON Web Token
@@ -25,5 +24,3 @@ passport.serializeUser(function(user, done) {
 passport.deserializeUser(function(user, done) {
   done(null, user);
 });
-
-module.exports = strategy;

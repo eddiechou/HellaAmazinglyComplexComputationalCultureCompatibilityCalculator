@@ -11,9 +11,7 @@ var db = require('../database/config');
 var dbHelpers = require('../database/helpers/request_helpers');
 var path = require('path');
 var secret = require('./secrets');
-
-// auth0 passport auth //
-var strategy = require('./social/auth0');
+var Auth0Strategy = require('./social/auth0');
 
 //-------------------------------------------------------------//
 
@@ -62,11 +60,10 @@ app.get('/AuthLogout', function(req, res){
 });
 
 app.get('/callback',
-  passport.authenticate('auth0', { failureRedirect: '/failed-login' }),
+  passport.authenticate('auth0', { failureRedirect: '/url-if-something-fails' }),
   function(req, res) {
-    console.log(req.user);
     res.redirect(req.session.returnTo || '/');
-});
+  });
 
 
 /****************/

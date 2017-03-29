@@ -10,8 +10,8 @@ var API = {
 var client = new Twitter({
   consumer_key: API.twitterKey,
   consumer_secret: API.twitterSecret,
-  access_token_key: '863873174-v8I7154WwDnRDw3fUBdvdy9URSXbCUWy2VUMDZOU',
-  access_token_secret: '3TIVojSiL82bkeFJBzGxzS8xtqSWy7XTBvAAhJ5Sg2ZXV'
+  access_token_key: '845032805713141761-uugr3b0pI4Pskn6RbfJoIRloUAUzzEg',
+  access_token_secret: 'qoQMqmYrTktGUhKR9WIfHb61JCqZH9Yx2b5DV4RyeOcju'
 });
 
 passport.use(new Strategy({

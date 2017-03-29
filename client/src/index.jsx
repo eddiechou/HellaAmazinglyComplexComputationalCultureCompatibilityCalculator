@@ -79,6 +79,7 @@ class App extends React.Component {
                   <li><Link to="/Tradeoff">search personalities</Link></li>
                 </ul>
                 <ul className="nav navbar-nav navbar-right">
+                
                   {!this.state.loggedIn && <li><a href="/AuthLogin">log in</a></li> }
                   {this.state.loggedIn && <li><a href='/AuthLogout'>logout</a></li> }
                 <li><div className="credit-photos">

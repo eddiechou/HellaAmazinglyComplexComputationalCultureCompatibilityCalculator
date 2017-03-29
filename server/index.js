@@ -63,13 +63,12 @@ app.get('/AuthLogout', function(req, res){
 app.get('/callback',
   passport.authenticate('auth0', { failureRedirect: '/failed-login' }),
   function(req, res) {
-    console.log(req.user);  
     res.redirect(req.session.returnTo || '/');
   });
 
 app.get('/LoggedIn', (req, res) => {
   req.user ? res.send('logged in') : res.send('not logged in');
-})
+});
 
 /****************/
 /**** NATIVE ****/

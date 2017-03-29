@@ -110,7 +110,6 @@ var createColumns = function(traitParams) {
   });
 };
 
-
 // TODO (Eddie): Right now, it only sends back the options array as a response,
 // still need to:
 // 1) create the whole Problem object 
@@ -121,17 +120,15 @@ var createColumns = function(traitParams) {
 // Problem object contains: subject, columns, and options
 var analyzeTradeoffs = function(req, res) {
 
-  console.log('before call defaultTraitParams', defaultTraitParams);
-
   var problemObj = {
     subject: 'personalities', 
     columns: null, 
     options: null
   };
-  var params = req.traitParams || defaultTraitParams;
+  var traitParams = req.traitParams || defaultTraitParams;
 
   // Populate with columns and options
-  createColumns(defaultTraitParams)
+  createColumns(traitParams)
   .then(function(columns) {
     problemObj.columns = columns;
     // Todo: Get req.traitParams

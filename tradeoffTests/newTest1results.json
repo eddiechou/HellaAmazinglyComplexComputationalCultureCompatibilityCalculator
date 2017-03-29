@@ -1,0 +1,454 @@
+{
+  "problem": {
+    "columns": [
+      {
+        "type": "numeric",
+        "key": "big5_openness",
+        "full_name": "Openness",
+        "range": {
+          "low": 0,
+          "high": 100
+        },
+        "format": "number:0",
+        "goal": "max",
+        "is_objective": true
+      },
+      {
+        "type": "numeric",
+        "key": "big5_conscientiousness",
+        "full_name": "Conscientiousness",
+        "range": {
+          "low": 0,
+          "high": 100
+        },
+        "format": "number:0",
+        "goal": "max",
+        "is_objective": true
+      },
+      {
+        "type": "numeric",
+        "key": "big5_extraversion",
+        "full_name": "Extraversion",
+        "range": {
+          "low": 0,
+          "high": 100
+        },
+        "format": "number:0",
+        "goal": "max",
+        "is_objective": true
+      },
+      {
+        "type": "numeric",
+        "key": "big5_agreeableness",
+        "full_name": "Adventurousness",
+        "range": {
+          "low": 0,
+          "high": 100
+        },
+        "format": "number:0",
+        "goal": "max",
+        "is_objective": true
+      },
+      {
+        "type": "numeric",
+        "key": "big5_neuroticism",
+        "full_name": "Neuroticism",
+        "range": {
+          "low": 0,
+          "high": 100
+        },
+        "format": "number:0",
+        "goal": "max",
+        "is_objective": true
+      }
+    ],
+    "subject": "personalities",
+    "options": [
+      {
+        "key": "58db04f9330cff536b1ae546",
+        "name": "@BarackObama",
+        "values": {
+          "big5_openness": 0.8978167577758184,
+          "big5_conscientiousness": 0.9829469062243569,
+          "big5_extraversion": 0.75544875165695,
+          "big5_agreeableness": 0.525610007054301,
+          "big5_neuroticism": 0.9512344845279868
+        }
+      },
+      {
+        "key": "58dbfedaae997775f55936aa",
+        "name": "@realDonaldTrump",
+        "values": {
+          "big5_openness": 0.8981554100126004,
+          "big5_conscientiousness": 0.9662154461697012,
+          "big5_extraversion": 0.9689426471120308,
+          "big5_agreeableness": 0.7557754694343677,
+          "big5_neuroticism": 0.9774592888940605
+        }
+      },
+      {
+        "key": "58db025f5ffd2f528710b9fd",
+        "name": "@Oprah",
+        "values": {
+          "big5_extraversion": 0.6899734478036017,
+          "big5_openness": 0.7072753979132993,
+          "big5_agreeableness": 0.9329066756941548,
+          "big5_conscientiousness": 0.9134107953160542,
+          "big5_neuroticism": 0.4872302509990549
+        }
+      },
+      {
+        "key": "58dbfec5ae997775f5593675",
+        "name": "@StephenAtHome",
+        "values": {
+          "big5_openness": 0.9358246293308186,
+          "big5_conscientiousness": 0.7310014654368379,
+          "big5_extraversion": 0.9187663004097784,
+          "big5_agreeableness": 0.6082952309085545,
+          "big5_neuroticism": 0.8616797427520728
+        }
+      },
+      {
+        "key": "58dbfe88ae997775f5593640",
+        "name": "@jimmyfallon",
+        "values": {
+          "big5_openness": 0.7139250559258994,
+          "big5_conscientiousness": 0.5062924196001641,
+          "big5_extraversion": 0.9609536057584567,
+          "big5_agreeableness": 0.6373505185891767,
+          "big5_neuroticism": 0.47070211342280366
+        }
+      },
+      {
+        "key": "58dbfe09ae997775f55935d6",
+        "name": "@Benioff",
+        "values": {
+          "big5_openness": 0.5097858962896739,
+          "big5_conscientiousness": 0.8698918203365671,
+          "big5_extraversion": 0.5125569203544621,
+          "big5_agreeableness": 0.7610483483070896,
+          "big5_neuroticism": 0.6609982243496988
+        }
+      },
+      {
+        "key": "58dbfe35ae997775f559360b",
+        "name": "@TheEllenShow",
+        "values": {
+          "big5_conscientiousness": 0.7571376134331183,
+          "big5_openness": 0.6799750422989002,
+          "big5_extraversion": 0.9719669439439915,
+          "big5_agreeableness": 0.9649840064059192,
+          "big5_neuroticism": 0.5936271703819951
+        }
+      },
+      {
+        "key": "58dbf4e9e420c77037fd2cb7",
+        "name": "@elonmusk",
+        "values": {
+          "big5_openness": 0.6096839731819919,
+          "big5_conscientiousness": 0.7205432574511972,
+          "big5_extraversion": 0.17673117209047845,
+          "big5_agreeableness": 0.049738689701793126,
+          "big5_neuroticism": 0.751743219246207
+        }
+      },
+      {
+        "key": "58dbff38ae997775f55936df",
+        "name": "@marissamayer",
+        "values": {
+          "big5_openness": 0.33313611943144056,
+          "big5_conscientiousness": 0.8849254019899633,
+          "big5_extraversion": 0.5465053034666342,
+          "big5_agreeableness": 0.8431566938111063,
+          "big5_neuroticism": 0.7918435630426435
+        }
+      }
+    ]
+  },
+  "resolution": {
+    "solutions": [
+      {
+        "solution_ref": "58dbff38ae997775f55936df",
+        "status": "FRONT"
+      },
+      {
+        "solution_ref": "58db04f9330cff536b1ae546",
+        "status": "FRONT"
+      },
+      {
+        "solution_ref": "58dbfedaae997775f55936aa",
+        "status": "FRONT",
+        "shadows": [
+          "58dbfe09ae997775f55935d6"
+        ]
+      },
+      {
+        "solution_ref": "58dbfec5ae997775f5593675",
+        "status": "FRONT"
+      },
+      {
+        "solution_ref": "58db025f5ffd2f528710b9fd",
+        "status": "FRONT"
+      },
+      {
+        "solution_ref": "58dbfe09ae997775f55935d6",
+        "status": "FRONT",
+        "shadow_me": [
+          "58dbfedaae997775f55936aa"
+        ]
+      },
+      {
+        "solution_ref": "58dbfe35ae997775f559360b",
+        "status": "FRONT"
+      },
+      {
+        "solution_ref": "58dbfe88ae997775f5593640",
+        "status": "EXCLUDED",
+        "excluded_by": [
+          {
+            "solution_ref": "58dbfedaae997775f55936aa",
+            "objectives": [
+              {
+                "key": "big5_openness",
+                "difference": 0.18
+              },
+              {
+                "key": "big5_conscientiousness",
+                "difference": 0.46
+              },
+              {
+                "key": "big5_extraversion",
+                "difference": 0.01
+              },
+              {
+                "key": "big5_agreeableness",
+                "difference": 0.12
+              },
+              {
+                "key": "big5_neuroticism",
+                "difference": 0.51
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "solution_ref": "58dbf4e9e420c77037fd2cb7",
+        "status": "EXCLUDED",
+        "excluded_by": [
+          {
+            "solution_ref": "58dbfedaae997775f55936aa",
+            "objectives": [
+              {
+                "key": "big5_openness",
+                "difference": 0.29
+              },
+              {
+                "key": "big5_conscientiousness",
+                "difference": 0.25
+              },
+              {
+                "key": "big5_extraversion",
+                "difference": 0.79
+              },
+              {
+                "key": "big5_agreeableness",
+                "difference": 0.71
+              },
+              {
+                "key": "big5_neuroticism",
+                "difference": 0.23
+              }
+            ]
+          },
+          {
+            "solution_ref": "58dbfec5ae997775f5593675",
+            "objectives": [
+              {
+                "key": "big5_openness",
+                "difference": 0.33
+              },
+              {
+                "key": "big5_conscientiousness",
+                "difference": 0.01
+              },
+              {
+                "key": "big5_extraversion",
+                "difference": 0.74
+              },
+              {
+                "key": "big5_agreeableness",
+                "difference": 0.56
+              },
+              {
+                "key": "big5_neuroticism",
+                "difference": 0.11
+              }
+            ]
+          },
+          {
+            "solution_ref": "58db04f9330cff536b1ae546",
+            "objectives": [
+              {
+                "key": "big5_openness",
+                "difference": 0.29
+              },
+              {
+                "key": "big5_conscientiousness",
+                "difference": 0.26
+              },
+              {
+                "key": "big5_extraversion",
+                "difference": 0.58
+              },
+              {
+                "key": "big5_agreeableness",
+                "difference": 0.48
+              },
+              {
+                "key": "big5_neuroticism",
+                "difference": 0.2
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "map": {
+      "nodes": [
+        {
+          "coordinates": {
+            "x": 5.426674527173839,
+            "y": 2.6813721012269527
+          },
+          "solution_refs": [
+            "58db04f9330cff536b1ae546"
+          ]
+        },
+        {
+          "coordinates": {
+            "x": 2.907882156589916,
+            "y": 3.491115884091774
+          },
+          "solution_refs": [
+            "58dbfec5ae997775f5593675"
+          ]
+        },
+        {
+          "coordinates": {
+            "x": 4.907379188869131,
+            "y": 3.535966947698072
+          },
+          "solution_refs": [
+            "58dbfedaae997775f55936aa"
+          ]
+        },
+        {
+          "coordinates": {
+            "x": 2.8690399961201076,
+            "y": 5.222731108837166
+          },
+          "solution_refs": [
+            "58dbfe35ae997775f559360b"
+          ]
+        },
+        {
+          "coordinates": {
+            "x": 4.349241690094614,
+            "y": 6.12217701891459
+          },
+          "solution_refs": [
+            "58db025f5ffd2f528710b9fd"
+          ]
+        },
+        {
+          "coordinates": {
+            "x": 6.348738722373826,
+            "y": 6.167028082520889
+          },
+          "solution_refs": [
+            "58dbfe09ae997775f55935d6"
+          ]
+        },
+        {
+          "coordinates": {
+            "x": 6.829191900208723,
+            "y": 7.04404846079516
+          },
+          "solution_refs": [
+            "58dbff38ae997775f55936df"
+          ]
+        }
+      ],
+      "anchors": [
+        {
+          "name": "big5_openness",
+          "position": {
+            "x": 1.7728845041087635,
+            "y": -0.9776418086793104
+          }
+        },
+        {
+          "name": "big5_extraversion",
+          "position": {
+            "x": -0.22158255797349255,
+            "y": 5.160696633729545
+          }
+        },
+        {
+          "name": "big5_agreeableness",
+          "position": {
+            "x": 5.000000000000003,
+            "y": 8.954398425588305
+          }
+        },
+        {
+          "name": "big5_conscientiousness",
+          "position": {
+            "x": 10.221582557973496,
+            "y": 5.160696633729541
+          }
+        },
+        {
+          "name": "big5_neuroticism",
+          "position": {
+            "x": 8.227115495891239,
+            "y": -0.9776418086793104
+          }
+        }
+      ],
+      "version": "APIV1-ANN",
+      "config": {
+        "params": {
+          "rInit": 5.748356172540663,
+          "rFinish": 1,
+          "seed": 20026,
+          "rAnchor": 1,
+          "alpha_init": 0.75,
+          "map_size": 63,
+          "training_period": 100,
+          "anchor_epoch": 2
+        },
+        "drivers": {
+          "r_fin": 1,
+          "r_init": 1.2,
+          "r_anchor_init": 1.2,
+          "training_length": 100,
+          "max_map_size": 200,
+          "alpha_init": 0.75,
+          "training_anchors": 0.25,
+          "data_multiplier": 9
+        }
+      },
+      "metrics": {
+        "mqe": "NaN",
+        "tau": "NaN",
+        "somers": "NaN",
+        "kappa": 0.6571428571428573,
+        "kappa_delta": "NaN",
+        "weighted_kappa": "NaN",
+        "final_kappa": 0.6190476190476191
+      }
+    }
+  }
+}

@@ -24,66 +24,6 @@ var createSession = function(username, id, res) {
   });
 };
 
-/* Creates options array for Watson Tradeoff API Problem object */ 
-
-// Example options array
-// [
-//   {
-//     "key": "1",
-//     "name": "Samsung Galaxy S4",
-//     "values": {
-//       "price": 249,
-//       "weight": 130,
-//       "brand": "Samsung",
-//       "rDate": "2013-04-29T00:00:00Z"
-//     }
-//   },
-//   {
-//     "key": "2",
-//     "name": "Apple iPhone 5",
-//     "values": {
-//       "price": 349,
-//       "weight": 112,
-//       "brand": "Apple",
-//       "rDate": "2012-09-21T00:00:00Z"
-//     }
-//   }
-// ]
-// var createOptions = function() {
-//   var options = [];
-
-//   // Query for the analyses we want (all public profiles FOR NOW)
-//   Analysis.find({private: false})
-//   .exec(function(err, publicArray) {
-//     if (err) { res.status(500).send(JSON.stringify({error: 'Databases failed to query'})); }
-//     res.send(JSON.stringify(publicArray));
-//   });
-
-//   // For each analysis returned
-//   for (var i = 0; i < analyses.length; i++) {
-//     // Set up key and name
-//     var obj = {
-//       key: analysis.analysis_id,
-//       name: analysis.person
-//     };
-
-//     // Set up values
-//     var values = {};
-//     // Query analyses_traits for all traits with this analysis_id
-//     // return analyses_traits in callback
-//     for (var i = 0; i < analyses_traits.length; i++) {
-//       values[analyses_traits.trait_id] = analyses_traits.percentile;
-//     }
-
-
-//     options.push(obj);
-    
-//   }
-//     // Set the key 
-
-//   return options;
-// };
-
 module.exports = {
   loginUser: function(req, res) {
     username = req.body.username;

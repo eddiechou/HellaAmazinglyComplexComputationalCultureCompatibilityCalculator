@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 // // src/views/Main/Login/Login.js
 
 // import React, { PropTypes as T } from 'react'
@@ -25,3 +26,18 @@
 // }
 
 // export default AuthLogin;
+=======
+'use strict';
+
+import React from 'react';
+
+export default class AuthLogin extends React.Component {
+  render() {
+    return (
+      <div>
+        login page
+      </div>
+    );
+  }
+}
+>>>>>>> (feat) Added auth login route to router

@@ -15,7 +15,6 @@ import CustomForm from './components/CustomForm.jsx';
 import * as s from './serverCalls.js';
 import { BrowserRouter as Router, Route, Link, Redirect } from 'react-router-dom';
 
-
 class App extends React.Component {
   constructor(props) {
     super(props);

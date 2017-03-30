@@ -25,7 +25,7 @@ var strategy = new Auth0Strategy({
       return done(null, profile);
     })
     .catch((err) => {
-      throw err;
+      return res.status(500).send(err);
     });
     
   });

@@ -22,7 +22,7 @@ var analyzeProfile = function(req, res) {
           name: req.body.name,
           context: req.body.context,
           private: req.body.private,
-          userId: req.cookies.session
+          userId: req.user ? req.user.userEmail : null
         }
         parseProfile(parseParams, profile)
           .then(function(analysisId) {

@@ -48,7 +48,7 @@ module.exports = {
     return {
       username: profile.nickname || null,
       displayName: profile.displayName || null,
-      email: profile.emails[0].value || null,
+      email: profile.emails ? profile.emails[0].value : profile.id,
       picture: profile.picture || null
     }
   },

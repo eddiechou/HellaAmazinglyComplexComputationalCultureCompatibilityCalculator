@@ -49,13 +49,10 @@ class App extends React.Component {
   }
 
   render () {
-    var taStyle = {
-      height: "100%"
-    }
 
     return (
       <Router>
-        <div className="container" style={taStyle}>
+        <div className="container">
           <nav className="navbar navbar-inverse navbar-fixed-top">
             <div className="container">
               <div className="navbar-header">
@@ -91,12 +88,8 @@ class App extends React.Component {
               
             </div>
           </nav>
-          <img id="datashrink" src={"/images/datashrink_360.jpg"} />
-          <div className="container" style={taStyle}>
-            <h1 className="header">datashrink
-              <span>&nbsp;&nbsp;&nbsp;</span>
-              {this.state.spinner && <img id="spinner" className="header" src={"/images/spinner.gif"} />}
-            </h1>
+          <div className="container">
+            {this.state.spinner && <img id="spinner" className="header" src={"/images/spinner.gif"} />}
             <Route path="/Home" component={About}/>
             <Route path="/TwitterSearch" component={() => <TwitterSearch toggleSpinner={this.toggleSpinner} />} />
             <Route path="/CustomForm" component={() => <CustomForm toggleSpinner={this.toggleSpinner}/>}/>

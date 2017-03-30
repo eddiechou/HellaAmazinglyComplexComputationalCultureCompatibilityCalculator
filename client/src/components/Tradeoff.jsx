@@ -56,12 +56,21 @@ class Tradeoff extends React.Component {
   }
 
   render () {
+
     var taStyle = {
       height: "100%"
     }
 
+    const containerStyle = {
+      height: '100vh',
+      margin: '0',
+      overflow: 'hidden'
+    }
+
     return (
-      <div id="ta" style={taStyle}>Tradeoff</div>
+      <div style={containerStyle}>
+        <div id="ta" style={taStyle} />
+      </div>
     );
   }
 }

@@ -177,13 +177,16 @@ module.exports = {
   },
 
   getUserAnalyses: function(req, res) {
-    if (req.cookies.session === undefined) {
+    if (!req.user) {
       res.send('No user.'); 
     } else {
-      Analysis.find({user_id: req.cookies.session})
+      Analysis.find({userEmail: req.user.userEmail})
       .exec(function(err, userAnalyses) {
-        if (err) { res.status(500).send(JSON.stringify({error: 'Databases failed to query'})); }
-        res.send(JSON.stringify(userAnalyses));
+        if (err) {
+          res.status(500).send(err);
+        } else {
+          res.send(JSON.stringify(userAnalyses));
+        }
       });     
     }
   },

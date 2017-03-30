@@ -37,13 +37,6 @@ d3BubbleChart.create = function(el, dataOrig) {
     .attr("height", "100%")
     .attr("fill", '#293950');
 
-  // svg.append("g").append('text')
-  //     .attr("x", 30)             
-  //     .attr("y", 30)
-  //     .attr('class', 'bubbleTitle')
-  //     .text(`datashrink ${dataContext} analysis: ${dataName}`);
-
-
   //packs in the circles
   var rootV = d3.hierarchy(data)
   rootV

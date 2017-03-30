@@ -70,20 +70,12 @@ app.get('/AuthLogout', Auth0Helpers.logout);
 
 app.get('/LoggedIn', Auth0Helpers.isLoggedIn);
 
-app.get('/callback',
-  passport.authenticate('auth0', { failureRedirect: '/failed-login' }),
-  function(req, res) {
-    res.redirect(req.session.returnTo || '/Home');
-  });
+app.get('/callback', Auth0Helpers.pAuth, Auth0Helpers.successRedirect);
 
 /****************/
 /**** NATIVE ****/
 /****************/
 
-// app.get('/hasSession', dbHelpers.hasSession);
-// app.post('/signup', dbHelpers.signup);
-// app.post('/login', dbHelpers.loginUser);     
-// app.get('/logout', dbHelpers.logoutUser);  
 app.get('/analyze/*', dbHelpers.findAllDataFromAnAnalysis); 
 app.get('/publicanalyses', dbHelpers.getPublicAnalyses);
 app.get('/useranalyses', dbHelpers.getUserAnalyses);

@@ -10,12 +10,6 @@ var BarChart = React.createClass({
     d3BarChart.create(el, this.props.data);
   },
 
-  // componentDidUpdate: function() {
-  //   d3.select('svg' ).remove();
-  //   var el = ReactDOM.findDOMNode(this);
-  //   d3BarChart.create(el, this.props.data);
-  // },
-
   render: function() {
     return (
       <div className="chart"></div>

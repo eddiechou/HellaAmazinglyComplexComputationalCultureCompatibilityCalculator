@@ -26,15 +26,35 @@ var AnalysisTrait = require('../models/analyses_traits');
 
 module.exports = {
 
-  auth0UserStore: (profile) => {
-    return new Promise((resolve, reject) => {
-      const userData = {
-        username: profile.nickname || null,
-        displayName: profile.displayName || null,
-        email: profile.emails[0].value || null,
-        picture: profile.picture || null
-      }
+  githubUserData: (profile) => {
+    return {
+      username: profile.nickname || null,
+      displayName: profile.displayName || null,
+      email: profile.emails[0].value.email || null,
+      picture: profile.picture || null
+    }
+  },
 
+  auth0UserData: (profile) => {
+    return {
+      username: profile.nickname || null,
+      displayName: profile.displayName || null,
+      email: profile.emails[0].value || null,
+      picture: profile.picture || null
+    }
+  },
+
+  facebookUserData: (profile) => {
+    return {
+      username: profile.nickname || null,
+      displayName: profile.displayName || null,
+      email: profile.emails[0].value || null,
+      picture: profile.picture || null
+    }
+  },
+
+  findOrCreateUser: (userData) => {
+    return new Promise((resolve, reject) => {
       User.findOne({ email: userData.email })
       .exec((err, user) => {
         if (err) {
@@ -49,14 +69,6 @@ module.exports = {
         }
       });
     });
-  },
-
-  facebookUserStore: (profile, cb) => {
-    cb(profile.provider);
-  },
-
-  githubUserStore: (profile, cb) => {
-    cb(profile.provider);
   },
   // loginUser: function(req, res) {
   //   username = req.body.username;

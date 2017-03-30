@@ -20,7 +20,7 @@ var taClient = new TradeoffAnalytics('ta');
   // Start the client
 taClient.start(function(){
   // Upon success, load the problem json...
-  $.getJSON('data.json', function(data) {
+  $.getJSON('./newTest1.json', function(data) {
     // ...and pass it to the client
     taClient.show(data);
   });

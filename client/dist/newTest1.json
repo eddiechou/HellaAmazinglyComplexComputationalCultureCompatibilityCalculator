@@ -5,7 +5,7 @@
       "key": "big5_openness",
       "type": "numeric",
       "goal": "max",
-      "is_objective": true,
+      "is_objective": false,
       "full_name": "Openness",
       "range": {
         "low": 0,
@@ -17,7 +17,7 @@
       "key": "big5_conscientiousness",
       "type": "numeric",
       "goal": "max",
-      "is_objective": true,
+      "is_objective": false,
       "full_name": "Conscientiousness",
       "range": {
         "low": 0,
@@ -29,7 +29,7 @@
       "key": "big5_extraversion",
       "type": "numeric",
       "goal": "max",
-      "is_objective": true,
+      "is_objective": false,
       "full_name": "Extraversion",
       "range": {
         "low": 0,
@@ -41,7 +41,7 @@
       "key": "big5_agreeableness",
       "type": "numeric",
       "goal": "max",
-      "is_objective": true,
+      "is_objective": false,
       "full_name": "Adventurousness",
       "range": {
         "low": 0,
@@ -53,7 +53,7 @@
       "key": "big5_neuroticism",
       "type": "numeric",
       "goal": "max",
-      "is_objective": true,
+      "is_objective": false,
       "full_name": "Neuroticism",
       "range": {
         "low": 0,

@@ -96,7 +96,7 @@ var createColumns = function(traitParams) {
         'key': trait.key,
         'type': 'numeric',
         'goal': trait.goal,
-        'is_objective': true,
+        'is_objective': false,
         'full_name': trait.full_name,
         'range': {
           'low': 0,

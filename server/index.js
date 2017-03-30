@@ -70,11 +70,7 @@ app.get('/AuthLogout', Auth0Helpers.logout);
 
 app.get('/LoggedIn', Auth0Helpers.isLoggedIn);
 
-app.get('/callback',
-  passport.authenticate('auth0', { failureRedirect: '/failed-login' }),
-  function(req, res) {
-    res.redirect(req.session.returnTo || '/Home');
-  });
+app.get('/callback', Auth0Helpers.pAuth, Auth0Helpers.successRedirect);
 
 /****************/
 /**** NATIVE ****/

@@ -1,3 +1,5 @@
+import passport from 'passport';
+
 exports.isLoggedIn = (req, res) => {
   if (req.user) {
     let email, provider = req.user.provider;
@@ -19,5 +21,11 @@ exports.renderLoginWidget = (req, res) => {
 
 exports.logout = (req, res) => {
   req.logout();
+  res.redirect('/Home');
+};
+
+exports.pAuth = passport.authenticate('auth0', { failureRedirect: '/failed-login' });
+
+exports.successRedirect = (req, res) => {
   res.redirect('/Home');
 };

@@ -9,6 +9,9 @@ class About extends React.Component {
   render () {
     return (
       <div>
+        <h1 className="header">What is datashrink?
+          <span>&nbsp;&nbsp;&nbsp;</span>
+        </h1>
         <div>
           <p className="lead">
             datashrink is a way for you to analyze a block of text or a Twitter account using&nbsp;

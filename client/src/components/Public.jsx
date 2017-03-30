@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import * as s from '../serverCalls.js';
-import * as globalData from '../sampledata'
 
 
 class Public extends React.Component {

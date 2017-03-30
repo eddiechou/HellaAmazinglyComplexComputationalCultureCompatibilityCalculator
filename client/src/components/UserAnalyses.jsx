@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import * as s from '../serverCalls.js';
-import * as globalData from '../sampledata'
 
 class UserAnalyses extends React.Component {
   constructor(props) {

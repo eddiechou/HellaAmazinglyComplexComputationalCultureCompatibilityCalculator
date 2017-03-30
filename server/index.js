@@ -10,9 +10,7 @@ var tw = require('./social/twitter.js');
 var db = require('../database/config');
 var dbHelpers = require('../database/helpers/request_helpers');
 var path = require('path');
-var secret = require('./secrets');
 var Auth0Strategy = require('./social/auth0');
-var tradeoffAnalyticsConfig = require('./tradeoff-analytics-config');
 
 //-------------------------------------------------------------//
 
@@ -23,6 +21,7 @@ app.use(express.static(__dirname + '/../client/dist'));
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
+const secret = "Jeff has a secret you cannot guess what it is!";
 app.use(cookieParser(secret));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
@@ -63,49 +62,28 @@ app.get('/AuthLogout', function(req, res){
 app.get('/callback',
   passport.authenticate('auth0', { failureRedirect: '/failed-login' }),
   function(req, res) {
-    console.log(req.user);  
-    res.redirect(req.session.returnTo || '/');
+    res.redirect(req.session.returnTo || '/Home');
   });
 
 app.get('/LoggedIn', (req, res) => {
   req.user ? res.send('logged in') : res.send('not logged in');
-})
+});
 
 /****************/
 /**** NATIVE ****/
 /****************/
 
-app.get('/hasSession', dbHelpers.hasSession);
-app.post('/signup', dbHelpers.signup);
-app.post('/login', dbHelpers.loginUser);     
-app.get('/logout', dbHelpers.logoutUser);  
+// app.get('/hasSession', dbHelpers.hasSession);
+// app.post('/signup', dbHelpers.signup);
+// app.post('/login', dbHelpers.loginUser);     
+// app.get('/logout', dbHelpers.logoutUser);  
 app.get('/analyze/*', dbHelpers.findAllDataFromAnAnalysis); 
 app.get('/publicanalyses', dbHelpers.getPublicAnalyses);
 app.get('/useranalyses', dbHelpers.getUserAnalyses);
 
-app.get('/tradeoffPage', (req, res) => {
-  console.log('serving tradeoff page');
-  res.sendFile(path.join(__dirname, '../client/dist/tradeoff.html'));
-});
-
 app.get('*', (req, res) => {
-  console.log('wildcard routing');
   res.sendFile(path.join(__dirname, '../client/dist/index.html'));
 });
-
-
-
-// For local development, copy your service instance credentials here, otherwise you may ommit this parameter
-var serviceCredentials = {
-  username: process.env.T_A_USERNAME,
-  password: process.env.T_A_PASSWORD
-}
-// When running on Bluemix, serviceCredentials will be overriden by the credentials obtained from VCAP_SERVICES
-tradeoffAnalyticsConfig.setupToken(app, serviceCredentials); 
-
-// to communicate with the service using a proxy rather then a token, add a dependency on "body-parser": "^1.15.0" 
-// to package.json, and use:
-// tradeoffAnalyticsConfig.setupProxy(app, serviceCredentials);
 
 
 

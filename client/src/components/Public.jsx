@@ -10,7 +10,6 @@ class Public extends React.Component {
       dataLoaded: false,
       data: '',
     }
-    console.log('loading props',props)
   }
 
   componentWillMount() {

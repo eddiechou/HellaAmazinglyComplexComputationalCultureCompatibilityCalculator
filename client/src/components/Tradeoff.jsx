@@ -2,11 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import * as s from '../serverCalls.js';
 import * as globalData from '../sampledata';
-// import taClient from '../tradeoff.js';
-// var TradeoffAnalytics = require('watson-developer-cloud/tradeoff-analytics/v1');
 
 
-class Tradeoff extends React.Component {
+export default class Tradeoff extends React.Component {
   constructor(props) {
     super(props)
     this.state = { 
@@ -47,11 +45,6 @@ class Tradeoff extends React.Component {
         console.log('Clicked. '+ op.name);
       });
 
-      // To cancel subscription, use either:
-      //   clk.unsubscribe();
-      //   taClient.clearSubscriptions('problemResolved');
-      //   taClient.clearAllSubscriptions();         
-
     });
   }
 
@@ -74,5 +67,3 @@ class Tradeoff extends React.Component {
     );
   }
 }
-
-export default Tradeoff

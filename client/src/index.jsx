@@ -11,6 +11,7 @@ import TradeoffTwitter from './components/TradeoffTwitter.jsx';
 import TradeoffResumes from './components/TradeoffResumes.jsx';
 import TwitterSearch from './components/TwitterSearch.jsx';
 import CustomForm from './components/CustomForm.jsx';
+import Profile from './components/Profile.jsx';
 import * as s from './serverCalls.js';
 import { BrowserRouter as Router, Route, Link, Redirect } from 'react-router-dom';
 
@@ -99,6 +100,7 @@ class App extends React.Component {
 
                 <ul className="nav navbar-nav navbar-right">
                   {!this.state.loggedIn && <li><a href="/AuthLogin">log in</a></li> }
+                  {this.state.loggedIn && <li><a href='/Profile'>profile</a></li> }
                   {this.state.loggedIn && <li><a href='/AuthLogout'>logout</a></li> }
                 <li><div className="credit-photos">
                   powered by: 
@@ -113,6 +115,7 @@ class App extends React.Component {
           <div className="container">
             {this.state.spinner && <img id="spinner" className="header" src={"/images/spinner.gif"} />}
             <Route path="/Home" component={About}/>
+            <Route path="/Profile" component={Profile}/>
             <Route path="/TwitterSearch" component={() => <TwitterSearch toggleSpinner={this.toggleSpinner} />} />
             <Route path="/CustomForm" component={() => <CustomForm toggleSpinner={this.toggleSpinner}/>}/>
             <Route path="/Public" component={() => <Public toggleSpinner={this.toggleSpinner} />} />          

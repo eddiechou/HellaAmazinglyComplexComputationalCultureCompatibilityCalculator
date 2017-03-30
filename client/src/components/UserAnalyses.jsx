@@ -15,7 +15,7 @@ class UserAnalyses extends React.Component {
     s.serverGet('user').then(e => {
       this.setState({
         dataLoaded: true,
-        data: e.data
+        data: e.data === 'No user.' ? [] : e.data
       })
     })
   } 

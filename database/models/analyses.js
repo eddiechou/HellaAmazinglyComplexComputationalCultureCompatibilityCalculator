@@ -5,7 +5,7 @@ var AnalysesSchema = mongoose.Schema({
   context: String,
   word_count: Number,
   private: Boolean,
-  user_id: String
+  userEmail: String
 });
 
 var Analysis = mongoose.model('Analysis', AnalysesSchema);

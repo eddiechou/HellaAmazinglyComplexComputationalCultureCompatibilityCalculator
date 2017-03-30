@@ -3,8 +3,6 @@ import ReactDOM from 'react-dom';
 import $ from 'jquery';
 import About from './components/About.jsx';
 import Create from './components/Create.jsx';
-// import LoginForm from './components/LoginForm.jsx';
-// import SignupForm from './components/SignupForm.jsx';
 import ComparisonChart from './components/ComparisonChart.jsx';
 import Analyses from './components/Analyses.jsx';
 import Public from './components/Public.jsx';

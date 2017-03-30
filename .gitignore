@@ -35,3 +35,6 @@ server/secrets.js
 .floobit
 .floo
 .flooignore
+
+
+client/dist/twitterProblem.json

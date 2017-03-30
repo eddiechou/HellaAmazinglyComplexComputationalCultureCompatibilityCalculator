@@ -2,6 +2,8 @@ var Analysis = require('../../database/models/analyses');
 var TraitScore = require('../../database/models/analyses_traits');
 var tw = require('../social/twitter.js');
 var personalityHelper = require('./personality-insights');
+var request = require('request');
+var tradeoffHelpers = require('./watson-tradeoff-helpers');
 
 var analysisId;
 
@@ -26,7 +28,12 @@ var analyzeProfile = function(req, res) {
         }
         parseProfile(parseParams, profile)
           .then(function(analysisId) {
-            res.redirect(301, '/analyses/' + analysisId);
+            // Once all traits are saved into the db, 
+            // Recreate the twitterProblem object and re-write twitterProblem.json
+            tradeoffHelpers.writeProblemJSON()
+            .then(() => {
+              res.redirect(301, '/analyses/' + analysisId);
+            });
           }); 
       });
   }

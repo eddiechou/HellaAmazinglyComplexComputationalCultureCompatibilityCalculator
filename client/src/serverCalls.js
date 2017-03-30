@@ -1,15 +1,12 @@
 import axios from 'axios';
 
 var routes = {
-    login: '/login',
-    signup: '/signup',
     public: '/publicanalyses',
     customform: '/analysis',
     twitter: '/twitter',
     twitterProfile: '/analysis',
     analyze: '/analyze/',
     user: '/useranalyses',
-    session: '/hasSession',
     checkLoggedIn: '/LoggedIn'
 }
 

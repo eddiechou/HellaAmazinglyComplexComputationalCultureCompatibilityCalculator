@@ -54,6 +54,10 @@ module.exports = {
   facebookUserStore: (profile, cb) => {
     cb(profile.provider);
   },
+
+  githubUserStore: (profile, cb) => {
+    cb(profile.provider);
+  },
   // loginUser: function(req, res) {
   //   username = req.body.username;
   //   password = req.body.password;

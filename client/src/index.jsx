@@ -5,40 +5,38 @@ import About from './components/About.jsx';
 import Create from './components/Create.jsx';
 import LoginForm from './components/LoginForm.jsx';
 import SignupForm from './components/SignupForm.jsx';
-import ComparisonChart from './components/ComparisonChart.jsx'
-import Analyses from './components/Analyses.jsx'
-import Public from './components/Public.jsx'
-import UserAnalyses from './components/UserAnalyses.jsx'
-import Tradeoff from './components/Tradeoff.jsx'
-import TwitterSearch from './components/TwitterSearch.jsx'
-import CustomForm from './components/CustomForm.jsx'
-import * as s from './serverCalls.js'
-
-import {
-  BrowserRouter as Router,
-  Route,
-  Link
-} from 'react-router-dom'
+import ComparisonChart from './components/ComparisonChart.jsx';
+import Analyses from './components/Analyses.jsx';
+import Public from './components/Public.jsx';
+import UserAnalyses from './components/UserAnalyses.jsx';
+import TwitterSearch from './components/TwitterSearch.jsx';
+import CustomForm from './components/CustomForm.jsx';
+import * as s from './serverCalls.js';
+import { BrowserRouter as Router, Route, Link, Redirect } from 'react-router-dom';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
+
+    ['toggleSpinner'].forEach((method) => {
+      this[method] = this[method].bind(this);
+    });
+
     this.state = {
       spinner: false,
       user: 'Guest',
       loggedIn: false,
     }
-    this.updateLoggedIn = this.updateLoggedIn.bind(this);
-    this.toggleSpinner = this.toggleSpinner.bind(this);
+
   }
 
-  componentWillMount() {
-    s.serverGet('session').then((e) => {
-      if (e.data.username) {
+  componentDidMount() {
+    s.serverGet('checkLoggedIn').then((res) => {
+      console.log(res);
+      if (res.data === 'logged in') {
         this.setState({
-          user: e.data.username,
           loggedIn: true
-        })
+        });
       }
     });
   }
@@ -48,26 +46,6 @@ class App extends React.Component {
       spinner : !this.state.spinner
     })
   }
-
-  //the Create style is for illustrative purposes
-    //to pass in props:
-    // <Route path="/Create" render={() => <Create {...this.state} /> } />
-  updateLoggedIn(username) {
-    username = username;
-    this.setState({
-      user: username,
-      loggedIn: true
-    });
-  }
-
-
-// =======
-//             {!this.state.loggedIn && <Route path="/LoginForm" render={() => <LoginForm update={this.updateLoggedIn} />} />}
-//             {!this.state.loggedIn && <Route path="/SignUpForm" render={() => <SignupForm update={this.updateLoggedIn} />} />}
-//             <Route path="/Create" render={() => <Create ownTwitter={true} {...this.state} toggleSpinner={this.toggleSpinner} /> } />
-//             <Route path="/Public" render={() => <Public toggleSpinner={this.toggleSpinner} /> }/>          
-// >>>>>>> implemented spinner
-
 
   render () {
 
@@ -97,9 +75,8 @@ class App extends React.Component {
                   <li><Link to="/Tradeoff">search personalities</Link></li>
                 </ul>
                 <ul className="nav navbar-nav navbar-right">
-                  {!this.state.loggedIn && <li><Link to="/LoginForm">log in</Link></li> }
-                  {!this.state.loggedIn && <li><Link to="/SignUpForm">sign up</Link></li> }
-                  {this.state.loggedIn && <li><a href='\logout'>logout</a></li> }
+                  {!this.state.loggedIn && <li><a href="/AuthLogin">log in</a></li> }
+                  {this.state.loggedIn && <li><a href='/AuthLogout'>logout</a></li> }
                 <li><div className="credit-photos">
                   powered by: 
                   <img id="footer-images" src={"/images/IBM-Watson-image.png"} />
@@ -116,8 +93,6 @@ class App extends React.Component {
               {this.state.spinner && <img id="spinner" className="header" src={"/images/spinner.gif"} />}
             </h1>
             <Route path="/Home" component={About}/>
-            {!this.state.loggedIn && <Route path="/LoginForm" component={() => <LoginForm update={this.updateLoggedIn} />} />}
-            {!this.state.loggedIn && <Route path="/SignUpForm" component={() => <SignupForm update={this.updateLoggedIn} />} />}
             <Route path="/TwitterSearch" component={() => <TwitterSearch toggleSpinner={this.toggleSpinner} />} />
             <Route path="/CustomForm" component={() => <CustomForm toggleSpinner={this.toggleSpinner}/>}/>
             <Route path="/Public" component={() => <Public toggleSpinner={this.toggleSpinner} />} />          
@@ -132,20 +107,3 @@ class App extends React.Component {
 }
 
 ReactDOM.render(<App />, document.getElementById('app'));
-
-//need to fix how far down the current analysis goes down
-//left justified
-//logo on the upper right of the page
-
- // <button type="button" className="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                //   <span className="sr-only">Toggle Navigation</span>
-                //   <span className="icon-bar"></span>
-                //   <span className="icon-bar"></span>
-                //   <span className="icon-bar"></span>
-                // </button>
-            // Datashrink interacts with Watson and Twitter to give you an in-depth personality analysis of yourself. 
-            // Datashrink operates by obtainnig all of a user's tweets from Twitter, these tweets are sent to Watson 
-            // which does an in-depth personality analysis, which is displayed to you in a histogram.  
-          // <footer id="footer" className="panel-footer">
-           
-          // </footer>

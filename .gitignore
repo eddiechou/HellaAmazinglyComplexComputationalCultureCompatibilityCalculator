@@ -18,6 +18,7 @@ coverage
 
 # Compiled Dirs (http://nodejs.org/api/addons.html)
 build/
+react-client/dist/bundle.js
 client/dist/bundle.js
 
 # Dependency directorys

@@ -11,13 +11,16 @@ var db = require('../database/config');
 var dbHelpers = require('../database/helpers/request_helpers');
 var path = require('path');
 var secret = require('./secrets');
+var Auth0Strategy = require('./social/auth0');
+
 //-------------------------------------------------------------//
 
 var app = express();
 
 app.use(express.static(__dirname + '/../client/dist'));
 
-app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'jade');
 
 app.use(cookieParser(secret));
 app.use(bodyParser.json());
@@ -42,6 +45,30 @@ app.get('/twitterProfile/*', tw.testAnalysis);
 
 app.post('/analysis', watsonHelpers.analyzeProfile);
 app.post('/tradeoff', tradeoffHelpers.analyzeTradeoffs);
+
+/****************/
+/**** Auth0 ****/
+/****************/
+
+app.get('/AuthLogin', (req, res) => {
+  res.render('login', { env: process.env });
+});
+
+app.get('/AuthLogout', function(req, res){
+  req.logout();
+  res.redirect('/Home');
+});
+
+app.get('/callback',
+  passport.authenticate('auth0', { failureRedirect: '/failed-login' }),
+  function(req, res) {
+    console.log(req.user);  
+    res.redirect(req.session.returnTo || '/');
+  });
+
+app.get('/LoggedIn', (req, res) => {
+  req.user ? res.send('logged in') : res.send('not logged in');
+})
 
 /****************/
 /**** NATIVE ****/

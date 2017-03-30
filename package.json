@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server/index.js",
-    "s": "nodemon server/index.js"
+    "s": "nodemon server/index.js --exec babel-node --presets react,es2015",
+    "build": "node_modules/.bin/webpack --watch"
   },
   "repository": {
     "type": "git",
@@ -27,6 +28,7 @@
     "webpack": "^2.2.1"
   },
   "dependencies": {
+    "auth0-lock": "^10.14.0",
     "axios": "^0.15.3",
     "babel-preset-stage-0": "^6.22.0",
     "body-parser": "^1.17.1",
@@ -39,12 +41,15 @@
     "ejs": "^2.5.6",
     "express": "^4.15.0",
     "express-session": "^1.15.1",
+    "jade": "^1.11.0",
     "jquery": "^3.1.1",
     "mongoose": "^4.8.6",
     "mongoose-double": "0.0.1",
     "passport": "^0.3.2",
+    "passport-auth0": "^0.6.0",
     "passport-twitter": "^1.0.4",
     "react": "^15.4.2",
+    "react-bootstrap": "^0.30.8",
     "react-dom": "^15.4.2",
     "react-router": "^4.0.0",
     "react-router-dom": "^4.0.0",

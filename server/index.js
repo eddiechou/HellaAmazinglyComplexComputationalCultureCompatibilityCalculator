@@ -73,10 +73,10 @@ app.get('/LoggedIn', (req, res) => {
 /**** NATIVE ****/
 /****************/
 
-app.get('/hasSession', dbHelpers.hasSession);
-app.post('/signup', dbHelpers.signup);
-app.post('/login', dbHelpers.loginUser);     
-app.get('/logout', dbHelpers.logoutUser);  
+// app.get('/hasSession', dbHelpers.hasSession);
+// app.post('/signup', dbHelpers.signup);
+// app.post('/login', dbHelpers.loginUser);     
+// app.get('/logout', dbHelpers.logoutUser);  
 app.get('/analyze/*', dbHelpers.findAllDataFromAnAnalysis); 
 app.get('/publicanalyses', dbHelpers.getPublicAnalyses);
 app.get('/useranalyses', dbHelpers.getUserAnalyses);

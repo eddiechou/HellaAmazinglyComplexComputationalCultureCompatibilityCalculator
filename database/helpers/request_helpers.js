@@ -28,28 +28,28 @@ module.exports = {
 
   githubUserData: (profile) => {
     return {
-      username: profile.nickname || null,
-      displayName: profile.displayName || null,
-      email: profile.emails[0].value.email || null,
-      picture: profile.picture || null
+      username: profile.nickname,
+      displayName: profile.displayName,
+      email: profile.emails[0].value.email,
+      picture: profile.picture
     }
   },
 
   auth0UserData: (profile) => {
     return {
-      username: profile.nickname || null,
-      displayName: profile.displayName || null,
-      email: profile.emails[0].value || null,
-      picture: profile.picture || null
+      username: profile.nickname,
+      displayName: profile.displayName,
+      email: profile.emails[0].value,
+      picture: profile.picture
     }
   },
 
   facebookUserData: (profile) => {
     return {
-      username: profile.nickname || null,
-      displayName: profile.displayName || null,
+      username: profile.nickname,
+      displayName: profile.displayName,
       email: profile.emails ? profile.emails[0].value : profile.id,
-      picture: profile.picture || null
+      picture: profile.picture
     }
   },
 

@@ -2,19 +2,19 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import * as s from '../serverCalls.js';
 
-
 export default class TradeoffResumes extends React.Component {
+
   constructor(props) {
-    super(props)
+    super(props);
     this.state = { 
-    }
+    };
   }
 
   componentDidMount() {
     var taClient = new TradeoffAnalytics('ta');
       
     // Start the client
-    taClient.start(function(){
+    taClient.start(function() {
       
       console.log('Starting TA Widget...');
       // Upon success, load the problem json...
@@ -35,16 +35,16 @@ export default class TradeoffResumes extends React.Component {
       });
       
       taClient.subscribe('compareClicked', function(ops) {
-        console.log('comparing options:' + ops.map(function(op){return op.name;}));
+        console.log('comparing options:' + ops.map(function(op) { return op.name; } ));
       });
       
       taClient.subscribe('problemResolved', function(dillema) {
-        var opOps = dillema.resolution.solutions.filter(function(s){return s.status=='FRONT';});
-        console.log('Problem Resolved. '+ opOps.length + ' Top options.' );
+        var opOps = dillema.resolution.solutions.filter(function(s) { return s.status === 'FRONT'; });
+        console.log('Problem Resolved. ' + opOps.length + ' Top options.' );
       });
       
       var clk = taClient.subscribe('optionClicked', function(op) {
-        console.log('Clicked. '+ op.name);
+        console.log('Clicked. ' + op.name);
       });
 
     });
@@ -53,14 +53,14 @@ export default class TradeoffResumes extends React.Component {
   render () {
 
     var taStyle = {
-      height: "100%"
-    }
+      height: '100%'
+    };
 
     const containerStyle = {
       height: '100vh',
       margin: '0',
       overflow: 'hidden'
-    }
+    };
 
     return (
       <div style={containerStyle}>

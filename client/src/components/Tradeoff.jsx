@@ -30,6 +30,8 @@ export default class Tradeoff extends React.Component {
       
       taClient.subscribe('doneClicked', function (op) {
         console.log('final decision is ' + op.name);
+        // taClient.destroy();
+        window.location.href = "https://www.twitter.com/" + op.name.slice(1);
       });
       
       taClient.subscribe('compareClicked', function(ops) {

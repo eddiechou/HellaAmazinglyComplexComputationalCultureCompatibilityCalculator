@@ -14,17 +14,14 @@ class Tradeoff extends React.Component {
   }
 
   componentDidMount() {
-    console.log('Tradeoff did mount');
-    
     var taClient = new TradeoffAnalytics('ta');
       
     // Start the client
     taClient.start(function(){
       console.log('Starting TA Widget...');
       // Upon success, load the problem json...
-      $.getJSON('../problem.json', function(data) {
+      $.getJSON('./problem.json', function(data) {
         // ...and pass it to the client
-        console.log('pass data!!!!!!');
         taClient.show(data);
       });
         
@@ -59,8 +56,12 @@ class Tradeoff extends React.Component {
   }
 
   render () {
+    var taStyle = {
+      height: "100%"
+    }
+
     return (
-      <div id="ta">Tradeoff</div>
+      <div id="ta" style={taStyle}>Tradeoff</div>
     );
   }
 }

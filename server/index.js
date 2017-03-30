@@ -4,6 +4,7 @@ var cookieParser = require('cookie-parser');
 var expressSession = require('express-session');
 var watsonHelpers = require('./watson/watson-helpers');
 var tradeoffHelpers = require('./watson/watson-tradeoff-helpers');
+var taWidget = require('./watson/tradeoff-analytics-config');
 var passport = require('passport');
 var ensureLogIn = require('connect-ensure-login').ensureLoggedIn();
 var tw = require('./social/twitter.js');
@@ -29,6 +30,18 @@ app.use(expressSession({secret: secret, resave: true, saveUnitialized: true}));
 
 app.use(passport.initialize());
 app.use(passport.session());
+
+/**********************/
+/**** TA Widget Setup ****/
+/**********************/
+
+// For local development, copy your service instance credentials here, otherwise you may ommit this parameter
+var serviceCredentials = {
+  username: process.env.T_A_USERNAME,
+  password: process.env.T_A_PASSWORD
+}
+// When running on Bluemix, serviceCredentials will be overriden by the credentials obtained from VCAP_SERVICES
+taWidget.setupToken(app, serviceCredentials); 
 
 /**********************/
 /**** SOCIAL MEDIA ****/

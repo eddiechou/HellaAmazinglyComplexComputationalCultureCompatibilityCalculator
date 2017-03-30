@@ -10,7 +10,6 @@ var tw = require('./social/twitter.js');
 var db = require('../database/config');
 var dbHelpers = require('../database/helpers/request_helpers');
 var path = require('path');
-var secret = require('./secrets');
 var Auth0Strategy = require('./social/auth0');
 
 //-------------------------------------------------------------//
@@ -22,6 +21,7 @@ app.use(express.static(__dirname + '/../client/dist'));
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
+const secret = "Jeff has a secret you cannot guess what it is!";
 app.use(cookieParser(secret));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));

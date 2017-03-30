@@ -63,7 +63,7 @@ app.get('/AuthLogout', function(req, res){
 app.get('/callback',
   passport.authenticate('auth0', { failureRedirect: '/failed-login' }),
   function(req, res) {
-    res.redirect(req.session.returnTo || '/');
+    res.redirect(req.session.returnTo || '/Home');
   });
 
 app.get('/LoggedIn', (req, res) => {

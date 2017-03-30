@@ -20,7 +20,7 @@ class Tradeoff extends React.Component {
     taClient.start(function(){
       console.log('Starting TA Widget...');
       // Upon success, load the problem json...
-      $.getJSON('./problem.json', function(data) {
+      $.getJSON('./newTest1.json', function(data) {
         // ...and pass it to the client
         taClient.show(data);
       });

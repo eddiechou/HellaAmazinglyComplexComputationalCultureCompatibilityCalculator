@@ -180,7 +180,7 @@ module.exports = {
     if (!req.user) {
       res.send('No user.'); 
     } else {
-      Analysis.find({userEmail: req.user.userEmail})
+      Analysis.find({user_id: req.user.userEmail})
       .exec(function(err, userAnalyses) {
         if (err) {
           res.status(500).send(err);

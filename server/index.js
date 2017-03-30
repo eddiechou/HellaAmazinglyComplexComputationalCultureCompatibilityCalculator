@@ -82,7 +82,13 @@ app.get('/analyze/*', dbHelpers.findAllDataFromAnAnalysis);
 app.get('/publicanalyses', dbHelpers.getPublicAnalyses);
 app.get('/useranalyses', dbHelpers.getUserAnalyses);
 
+app.get('/tradeoffPage', (req, res) => {
+  console.log('serving tradeoff page');
+  res.sendFile(path.join(__dirname, '../client/dist/tradeoff.html'));
+});
+
 app.get('*', (req, res) => {
+  console.log('wildcard routing');
   res.sendFile(path.join(__dirname, '../client/dist/index.html'));
 });
 

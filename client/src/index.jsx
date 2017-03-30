@@ -72,7 +72,7 @@ class App extends React.Component {
                   </li>
                   <li><Link to="/User">saved analyses</Link></li>
                   <li><Link to="/Public">browse analyses</Link></li>
-                  <li><Link to="/Tradeoff">search personalities</Link></li>
+                  <li><a href="/tradeoffPage">search personalities</a></li>
                 </ul>
                 <ul className="nav navbar-nav navbar-right">
                   {!this.state.loggedIn && <li><a href="/AuthLogin">log in</a></li> }
@@ -97,7 +97,6 @@ class App extends React.Component {
             <Route path="/CustomForm" component={() => <CustomForm toggleSpinner={this.toggleSpinner}/>}/>
             <Route path="/Public" component={() => <Public toggleSpinner={this.toggleSpinner} />} />          
             <Route path="/User" component={UserAnalyses}/>
-            <Route path="/Tradeoff" component={Tradeoff}/>
             <Route path="/analyses/:id" render={(nativeProps) => <Analyses nativeProps={nativeProps} toggleSpinner={this.toggleSpinner} /> } />
           </div>
         </div>

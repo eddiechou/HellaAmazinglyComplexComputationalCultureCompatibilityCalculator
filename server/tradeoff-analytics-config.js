@@ -98,6 +98,19 @@ module.exports = {
   }
 }
 
+// For local development, copy your service instance credentials here, otherwise you may ommit this parameter
+var serviceCredentials = {
+  username: process.env.T_A_USERNAME,
+  password: process.env.T_A_PASSWORD
+}
+// When running on Bluemix, serviceCredentials will be overriden by the credentials obtained from VCAP_SERVICES
+module.exports.setupToken(app, serviceCredentials); 
+
+// to communicate with the service using a proxy rather then a token, add a dependency on "body-parser": "^1.15.0" 
+// to package.json, and use:
+// tradeoffAnalyticsConfig.setupProxy(app, serviceCredentials);
+
+
 /**
  * if VCAP_SERVICES exists then it returns username, password and url
  * for the first service that stars with 'name' or {} otherwise

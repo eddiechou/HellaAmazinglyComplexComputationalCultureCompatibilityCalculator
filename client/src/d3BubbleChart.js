@@ -1,7 +1,7 @@
 import * as d3 from 'd3';
 
 var d3BubbleChart = {};
-d3BubbleChart.create = function(el, dataOrig, explanations) {
+d3BubbleChart.create = function(el, dataOrig) {
   var dataCopy = JSON.stringify(dataOrig);
   var data = JSON.parse(dataCopy)
   data['children'] = data['traits'];
@@ -103,8 +103,7 @@ d3BubbleChart.create = function(el, dataOrig, explanations) {
   node
     .append('title')
     .text(function(d) { 
-      return d.data.name + ': ' + twoDecFormat(d.data.percentile) +
-        (explanations[d.data.name] ? '\n\n' + explanations[d.data.name] : '')
+      return d.data.name + ': ' + twoDecFormat(d.data.percentile)
     });
 
   svg.append("g").append('text')

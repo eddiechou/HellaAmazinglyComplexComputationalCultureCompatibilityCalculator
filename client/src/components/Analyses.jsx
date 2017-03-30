@@ -4,16 +4,10 @@ import * as s from '../serverCalls.js';
 import BubbleChart from './BubbleChart.jsx';
 import BarChart from './BarChart.jsx';
 import ComparisonChart from './ComparisonChart.jsx';
-import * as globalData from '../sampledata'
 import Public from './Public.jsx'
 import Create from './Create.jsx'
 import UserAnalyses from './UserAnalyses.jsx'
-
-import {
-  BrowserRouter as Router,
-  Route,
-  Link
-} from 'react-router-dom'
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 
 class Analyses extends React.Component {
   constructor(props) {
@@ -21,7 +15,6 @@ class Analyses extends React.Component {
     this.state = { 
       dataLoaded: false,
       data: '',
-      explanations: globalData.explanations,
       secondDataSet: false,
       data2: '',
       error: false,
@@ -125,7 +118,7 @@ class Analyses extends React.Component {
           {!this.state.secondDataSet ? null :
             <ComparisonChart data={this.state.data} data2={this.state.data2} /> }
           <BarChart data={this.state.data} />
-          <BubbleChart data={this.state.data} explanations={this.state.explanations}/>
+          <BubbleChart data={this.state.data}/>
           </div>
         }
       </div>

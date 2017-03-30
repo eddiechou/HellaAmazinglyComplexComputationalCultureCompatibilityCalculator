@@ -12,6 +12,7 @@ var db = require('../database/config');
 var dbHelpers = require('../database/helpers/request_helpers');
 var path = require('path');
 var Auth0Strategy = require('./social/auth0');
+var Auth0Helpers = require('./Helpers/Auth0Helpers');
 
 //-------------------------------------------------------------//
 
@@ -63,24 +64,17 @@ app.post('/tradeoff', tradeoffHelpers.analyzeTradeoffs);
 /**** Auth0 ****/
 /****************/
 
-app.get('/AuthLogin', (req, res) => {
-  res.render('login', { env: process.env });
-});
+app.get('/AuthLogin', Auth0Helpers.renderLoginWidget);
 
-app.get('/AuthLogout', function(req, res){
-  req.logout();
-  res.redirect('/Home');
-});
+app.get('/AuthLogout', Auth0Helpers.logout);
+
+app.get('/LoggedIn', Auth0Helpers.isLoggedIn);
 
 app.get('/callback',
   passport.authenticate('auth0', { failureRedirect: '/failed-login' }),
   function(req, res) {
     res.redirect(req.session.returnTo || '/Home');
   });
-
-app.get('/LoggedIn', (req, res) => {
-  req.user ? res.send('logged in') : res.send('not logged in');
-});
 
 /****************/
 /**** NATIVE ****/

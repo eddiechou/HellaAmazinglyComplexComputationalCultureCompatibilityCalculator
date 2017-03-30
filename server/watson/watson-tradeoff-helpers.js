@@ -61,7 +61,7 @@ var createOptions = function(callback) {
                   // TEMPORARILY FILTER to minimize results:
                   // Will only get big5 traits
                   if (analysisTraits[j].trait_id.charAt(0) === 'b') {
-                    values[analysisTraits[j].trait_id] = analysisTraits[j].percentile.valueOf();
+                    values[analysisTraits[j].trait_id] = analysisTraits[j].percentile.valueOf() * 100;
                   }
                 }
               }

@@ -9,7 +9,7 @@
       "full_name": "Openness",
       "range": {
         "low": 0,
-        "high": 1
+        "high": 100
       },
       "format": "number:0"
     },
@@ -21,7 +21,7 @@
       "full_name": "Conscientiousness",
       "range": {
         "low": 0,
-        "high": 1
+        "high": 100
       },
       "format": "number:0"
     },
@@ -33,7 +33,7 @@
       "full_name": "Extraversion",
       "range": {
         "low": 0,
-        "high": 1
+        "high": 100
       },
       "format": "number:0"
     },
@@ -45,7 +45,7 @@
       "full_name": "Adventurousness",
       "range": {
         "low": 0,
-        "high": 1
+        "high": 100
       },
       "format": "number:0"
     },
@@ -57,109 +57,131 @@
       "full_name": "Neuroticism",
       "range": {
         "low": 0,
-        "high": 1
+        "high": 100
       },
       "format": "number:0"
     }
   ],
   "options": [
     {
-      "key": "58dbf4e9e420c77037fd2cb7",
-      "name": "@elonmusk",
+      "key": "58db025f5ffd2f528710b9fd",
+      "name": "@Oprah",
       "values": {
-        "big5_openness": 0.6096839731819919,
-        "big5_conscientiousness": 0.7205432574511972,
-        "big5_extraversion": 0.17673117209047845,
-        "big5_agreeableness": 0.049738689701793126,
-        "big5_neuroticism": 0.751743219246207
+        "big5_extraversion": 68.99734478036017,
+        "big5_openness": 70.72753979132993,
+        "big5_agreeableness": 93.29066756941548,
+        "big5_conscientiousness": 91.34107953160542,
+        "big5_neuroticism": 48.72302509990549
       }
     },
     {
       "key": "58db04f9330cff536b1ae546",
       "name": "@BarackObama",
       "values": {
-        "big5_openness": 0.8978167577758184,
-        "big5_conscientiousness": 0.9829469062243569,
-        "big5_extraversion": 0.75544875165695,
-        "big5_agreeableness": 0.525610007054301,
-        "big5_neuroticism": 0.9512344845279868
+        "big5_openness": 89.78167577758184,
+        "big5_conscientiousness": 98.29469062243568,
+        "big5_extraversion": 75.544875165695,
+        "big5_agreeableness": 52.561000705430104,
+        "big5_neuroticism": 95.12344845279867
       }
     },
     {
-      "key": "58dbfec5ae997775f5593675",
-      "name": "@StephenAtHome",
+      "key": "58dbf4e9e420c77037fd2cb7",
+      "name": "@elonmusk",
       "values": {
-        "big5_openness": 0.9358246293308186,
-        "big5_conscientiousness": 0.7310014654368379,
-        "big5_extraversion": 0.9187663004097784,
-        "big5_agreeableness": 0.6082952309085545,
-        "big5_neuroticism": 0.8616797427520728
-      }
-    },
-    {
-      "key": "58db025f5ffd2f528710b9fd",
-      "name": "@Oprah",
-      "values": {
-        "big5_extraversion": 0.6899734478036017,
-        "big5_openness": 0.7072753979132993,
-        "big5_agreeableness": 0.9329066756941548,
-        "big5_conscientiousness": 0.9134107953160542,
-        "big5_neuroticism": 0.4872302509990549
-      }
-    },
-    {
-      "key": "58dbfe88ae997775f5593640",
-      "name": "@jimmyfallon",
-      "values": {
-        "big5_openness": 0.7139250559258994,
-        "big5_conscientiousness": 0.5062924196001641,
-        "big5_extraversion": 0.9609536057584567,
-        "big5_agreeableness": 0.6373505185891767,
-        "big5_neuroticism": 0.47070211342280366
-      }
-    },
-    {
-      "key": "58dbfe09ae997775f55935d6",
-      "name": "@Benioff",
-      "values": {
-        "big5_openness": 0.5097858962896739,
-        "big5_conscientiousness": 0.8698918203365671,
-        "big5_extraversion": 0.5125569203544621,
-        "big5_agreeableness": 0.7610483483070896,
-        "big5_neuroticism": 0.6609982243496988
-      }
-    },
-    {
-      "key": "58dbff38ae997775f55936df",
-      "name": "@marissamayer",
-      "values": {
-        "big5_openness": 0.33313611943144056,
-        "big5_conscientiousness": 0.8849254019899633,
-        "big5_extraversion": 0.5465053034666342,
-        "big5_agreeableness": 0.8431566938111063,
-        "big5_neuroticism": 0.7918435630426435
+        "big5_openness": 60.96839731819919,
+        "big5_conscientiousness": 72.05432574511971,
+        "big5_extraversion": 17.673117209047845,
+        "big5_agreeableness": 4.973868970179312,
+        "big5_neuroticism": 75.1743219246207
       }
     },
     {
       "key": "58dbfe35ae997775f559360b",
       "name": "@TheEllenShow",
       "values": {
-        "big5_conscientiousness": 0.7571376134331183,
-        "big5_openness": 0.6799750422989002,
-        "big5_extraversion": 0.9719669439439915,
-        "big5_agreeableness": 0.9649840064059192,
-        "big5_neuroticism": 0.5936271703819951
+        "big5_conscientiousness": 75.71376134331183,
+        "big5_openness": 67.99750422989001,
+        "big5_extraversion": 97.19669439439915,
+        "big5_agreeableness": 96.49840064059192,
+        "big5_neuroticism": 59.362717038199506
+      }
+    },
+    {
+      "key": "58dbfe09ae997775f55935d6",
+      "name": "@Benioff",
+      "values": {
+        "big5_openness": 50.978589628967384,
+        "big5_conscientiousness": 86.9891820336567,
+        "big5_extraversion": 51.25569203544621,
+        "big5_agreeableness": 76.10483483070895,
+        "big5_neuroticism": 66.09982243496988
+      }
+    },
+    {
+      "key": "58dbfe88ae997775f5593640",
+      "name": "@jimmyfallon",
+      "values": {
+        "big5_openness": 71.39250559258994,
+        "big5_conscientiousness": 50.629241960016415,
+        "big5_extraversion": 96.09536057584566,
+        "big5_agreeableness": 63.73505185891767,
+        "big5_neuroticism": 47.070211342280366
+      }
+    },
+    {
+      "key": "58dbfec5ae997775f5593675",
+      "name": "@StephenAtHome",
+      "values": {
+        "big5_openness": 93.58246293308186,
+        "big5_conscientiousness": 73.10014654368379,
+        "big5_extraversion": 91.87663004097783,
+        "big5_agreeableness": 60.82952309085545,
+        "big5_neuroticism": 86.16797427520729
+      }
+    },
+    {
+      "key": "58dbff38ae997775f55936df",
+      "name": "@marissamayer",
+      "values": {
+        "big5_openness": 33.31361194314405,
+        "big5_conscientiousness": 88.49254019899632,
+        "big5_extraversion": 54.650530346663416,
+        "big5_agreeableness": 84.31566938111062,
+        "big5_neuroticism": 79.18435630426434
       }
     },
     {
       "key": "58dbfedaae997775f55936aa",
       "name": "@realDonaldTrump",
       "values": {
-        "big5_openness": 0.8981554100126004,
-        "big5_conscientiousness": 0.9662154461697012,
-        "big5_extraversion": 0.9689426471120308,
-        "big5_agreeableness": 0.7557754694343677,
-        "big5_neuroticism": 0.9774592888940605
+        "big5_openness": 89.81554100126003,
+        "big5_conscientiousness": 96.62154461697013,
+        "big5_extraversion": 96.89426471120308,
+        "big5_agreeableness": 75.57754694343677,
+        "big5_neuroticism": 97.74592888940606
+      }
+    },
+    {
+      "key": "58dc00a8b138a07687f46955",
+      "name": "@Uber",
+      "values": {
+        "big5_openness": 34.480914558560386,
+        "big5_conscientiousness": 91.29161806137573,
+        "big5_extraversion": 78.26938073651026,
+        "big5_agreeableness": 36.28899534338002,
+        "big5_neuroticism": 98.28918662742643
+      }
+    },
+    {
+      "key": "58dc00b6b138a07687f4698a",
+      "name": "@lyft",
+      "values": {
+        "big5_openness": 49.638977628030375,
+        "big5_conscientiousness": 78.36066552696272,
+        "big5_extraversion": 60.71713932439611,
+        "big5_agreeableness": 52.550107752716336,
+        "big5_neuroticism": 88.62614751268254
       }
     }
   ]

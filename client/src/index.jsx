@@ -31,8 +31,9 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    s.serverGet('checkLoggedIn').then(({ data }) => {
-      if (data === 'logged in') {
+    s.serverGet('checkLoggedIn').then((res) => {
+      console.log(res);
+      if (res.data === 'logged in') {
         this.setState({
           loggedIn: true
         });
@@ -74,7 +75,7 @@ class App extends React.Component {
                 </ul>
                 <ul className="nav navbar-nav navbar-right">
                   {!this.state.loggedIn && <li><a href="/AuthLogin">log in</a></li> }
-                  {this.state.loggedIn && <li><a href='\logout'>logout</a></li> }
+                  {this.state.loggedIn && <li><a href='/AuthLogout'>logout</a></li> }
                 <li><div className="credit-photos">
                   powered by: 
                   <img id="footer-images" src={"/images/IBM-Watson-image.png"} />

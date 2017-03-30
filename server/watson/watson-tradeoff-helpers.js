@@ -1,6 +1,7 @@
 var Analysis = require('../../database/models/analyses');
 var AnalysesTrait = require('../../database/models/analyses_traits');
 var tradeoff = require('./tradeoff');
+var fs = require('fs');
 
 // Example options array
 // [
@@ -111,42 +112,57 @@ var createColumns = function(traitParams) {
   });
 };
 
-// TODO (Eddie): Right now, it only sends back the options array as a response,
-// still need to:
-// 1) create the whole Problem object (DONE)
-// 2) send whole Problem object to Watson Tradeoff API (DONE)
-// 3) deal with result
-
-// Sends a POST request with a Problem object to the Watson Tradeoff API
 // Problem object contains: subject, columns, and options
-var analyzeTradeoffs = function(req, res) {
+var createProblemObject = function() {
 
-  var problemObj = {
-    subject: 'personalities', 
-    columns: null, 
-    options: null
-  };
+  return new Promise((resolve, reject) => {
+    var problemObj = {
+      subject: 'personalities', 
+      columns: null, 
+      options: null
+    };
 
-  // TODO (Eddie): Set up middleware to parse data from client to create req.traitParams
-  var traitParams = req.traitParams || defaultTraitParams;
+    var traitParams = defaultTraitParams;
 
-  // Populate the Problem Object with columns and options properties
-  createColumns(traitParams)
-  .then(function(columns) {
-    problemObj.columns = columns;
-    return createOptions();
-  })
-  .then(function(options) {
-    problemObj.options = options;
+    // Populate the Problem Object with columns and options properties
+    createColumns(traitParams)
+    .then(function(columns) {
+      problemObj.columns = columns;
+      return createOptions();
+    })
+    .then(function(options) {
+      problemObj.options = options;
 
-    // Send problem object to the Watson Tradeoff API
-    tradeoff.getDilemma(problemObj);
+      // Send problem object to the Watson Tradeoff API
+      // Note: Since we're using the widget, we don't need to make an API call from our server
+      // tradeoff.getDilemma(problemObj);
 
-    // TODO (Eddie): Send a proper response back to the client
-    res.send(JSON.stringify(problemObj));
+      resolve(problemObj);
+    });
+
   });
 };
 
-module.exports.analyzeTradeoffs = analyzeTradeoffs;
-module.exports.createOptions = createOptions;
-module.exports.createColumns = createColumns;
+// TODO (Eddie): should differentiate based on twitter vs. resume analyses
+// For now: only twitter
+var writeProblemJSON = function() {
+  console.log('in writeProblemJSON');
+  
+  return new Promise((resolve, reject) => {
+    createProblemObject()
+    .then(function(problemObj) {
+      console.log('before writefile');
+      var filename = './client/dist/twitterProblem.json';
+      fs.writeFile(filename, JSON.stringify(problemObj), (err) => {
+        if (err) {
+          reject();
+          throw err;
+        }
+        console.log('The file ' + filename + ' has been saved!');
+        resolve();
+      });
+    });
+  });
+};
+
+module.exports.writeProblemJSON = writeProblemJSON;

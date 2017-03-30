@@ -15,14 +15,17 @@ var strategy = new Auth0Strategy({
     clientSecret: process.env.AUTH0_CLIENT_SECRET,
     callbackURL:  '/callback'
   }, function(accessToken, refreshToken, extraParams, profile, done) {
-    
-    console.log(providers[profile.provider]);
 
     // route to specific helper func based on login provider
-    providers[profile.provider](profile, (param) => {
+    providers[profile.provider](profile)
+    .then((response) => {
+      console.log(response);
       return done(null, profile);
+    })
+    .catch((err) => {
+      throw err;
     });
-
+    
   });
 
 passport.use(strategy);

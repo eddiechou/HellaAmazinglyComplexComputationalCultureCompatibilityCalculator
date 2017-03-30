@@ -26,15 +26,32 @@ var AnalysisTrait = require('../models/analyses_traits');
 
 module.exports = {
 
-  auth0UserStore: (profile, cb) => {
-    console.log(profile);
-    // const username = 
-    cb(profile.provider);
+  auth0UserStore: (profile) => {
+    return new Promise((resolve, reject) => {
+      const userData = {
+        username: profile.nickname || null,
+        displayName: profile.displayName || null,
+        email: profile.emails[0].value || null,
+        picture: profile.picture || null
+      }
+
+      User.findOne({ email: userData.email })
+      .exec((err, user) => {
+        if (err) {
+          reject(err);
+        } else if (!user) {
+          let user = new User(userData);
+          user.save((err, success) => {
+            err ? reject(err) : resolve('User Stored.');
+          });
+        } else {
+          resolve('User exists.');
+        }
+      });
+    });
   },
 
   facebookUserStore: (profile, cb) => {
-    console.log(profile);
-    // const username = 
     cb(profile.provider);
   },
   // loginUser: function(req, res) {

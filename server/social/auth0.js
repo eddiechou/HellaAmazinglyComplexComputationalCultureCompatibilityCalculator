@@ -5,7 +5,8 @@ import dbHelpers from '../../database/helpers/request_helpers';
 const formatUserData = {
   auth0: dbHelpers.auth0UserData,
   github: dbHelpers.githubUserData,
-  facebook: dbHelpers.facebookUserData
+  facebook: dbHelpers.facebookUserData,
+  google: dbHelpers.googleUserData
 }
 
 // Configure Passport to use Auth0

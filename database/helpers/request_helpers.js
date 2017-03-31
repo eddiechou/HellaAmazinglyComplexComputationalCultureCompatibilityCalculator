@@ -1,11 +1,20 @@
-var db = require('../config');
-var User = require('../models/users');
-var Analysis = require('../models/analyses');
-var AnalysisTrait = require('../models/analyses_traits');
+import db from '../config';
+import User from '../models/users';
+import Analysis from '../models/analyses';
+import AnalysisTrait from '../models/analyses_traits';
 
 module.exports = {
 
   githubUserData: (profile) => {
+    return {
+      username: profile.nickname,
+      displayName: profile.displayName,
+      email: profile.emails[0].value.email,
+      picture: profile.picture
+    }
+  },
+
+  googleUserData: (profile) => {
     return {
       username: profile.nickname,
       displayName: profile.displayName,

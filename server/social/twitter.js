@@ -17,7 +17,7 @@ var client = new Twitter({
 passport.use(new Strategy({
     consumerKey: API.twitterKey,
     consumerSecret: API.twitterSecret,
-    callbackURL: 'https://datashrink72.herokuapp.com/twitter/return'
+    callbackURL: 'http://localhost:3000/twitter/return'
   },
   function(token, tokenSecret, profile, cb) {
     console.log(token, ' ', tokenSecret);

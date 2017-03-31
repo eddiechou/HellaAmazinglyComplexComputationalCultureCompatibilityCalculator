@@ -71,6 +71,8 @@ app.get('/LoggedIn', Auth0Helpers.isLoggedIn);
 
 app.get('/callback', Auth0Helpers.pAuth, Auth0Helpers.successRedirect);
 
+app.get('/userData', Auth0Helpers.getUserData);
+
 /****************/
 /**** NATIVE ****/
 /****************/

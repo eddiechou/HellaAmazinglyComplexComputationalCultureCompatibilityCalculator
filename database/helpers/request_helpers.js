@@ -28,7 +28,7 @@ module.exports = {
       username: profile.nickname,
       displayName: profile.displayName,
       email: profile.emails ? profile.emails[0].value : profile.id,
-      picture: profile.picture
+      picture: profile._json.picture_large
     }
   },
 
@@ -41,10 +41,10 @@ module.exports = {
         } else if (!user) {
           let user = new User(userData);
           user.save((err, success) => {
-            err ? reject(err) : resolve('User Stored.');
+            err ? reject(err) : resolve(user);
           });
         } else {
-          resolve('User exists.');
+          resolve(user);
         }
       });
     });

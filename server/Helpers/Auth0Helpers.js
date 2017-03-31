@@ -1,4 +1,11 @@
 import passport from 'passport';
+import dbHelpers from '../../database/helpers/request_helpers';
+
+const formatUserData = {
+  auth0: dbHelpers.auth0UserData,
+  github: dbHelpers.githubUserData,
+  facebook: dbHelpers.facebookUserData
+}
 
 exports.isLoggedIn = (req, res) => {
   if (req.user) {
@@ -31,3 +38,8 @@ exports.pAuth = passport.authenticate('auth0', { failureRedirect: '/failed-login
 exports.successRedirect = (req, res) => {
   res.redirect('/Home');
 };
+
+exports.getUserData = (req, res) => {
+  let userData = formatUserData[req.user.provider](req.user);
+  res.send(userData);
+}

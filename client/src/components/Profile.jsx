@@ -58,7 +58,7 @@ export default class Profile extends React.Component {
                   </div>
 
                   <ul className="container details">
-                    <li><p><span className="listing glyphicon glyphicon-earphone one" style={liStyle}></span>{this.state.username}</p></li>
+                    <li><p><span className="listing glyphicon glyphicon-user one" style={liStyle}></span>{this.state.username}</p></li>
                     <li><p><span className="listing glyphicon glyphicon-envelope one" style={liStyle}></span>{this.state.email}</p></li>
                   </ul>
                 </div>

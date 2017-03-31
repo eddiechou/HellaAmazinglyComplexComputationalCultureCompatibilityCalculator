@@ -58,7 +58,6 @@ app.get('/twitterProfile/*', tw.testAnalysis);
 /****************/
 
 app.post('/analysis', watsonHelpers.analyzeProfile);
-app.post('/tradeoff', tradeoffHelpers.analyzeTradeoffs);
 
 /****************/
 /**** Auth0 ****/
@@ -71,6 +70,8 @@ app.get('/AuthLogout', Auth0Helpers.logout);
 app.get('/LoggedIn', Auth0Helpers.isLoggedIn);
 
 app.get('/callback', Auth0Helpers.pAuth, Auth0Helpers.successRedirect);
+
+app.get('/userData', Auth0Helpers.getUserData);
 
 /****************/
 /**** NATIVE ****/

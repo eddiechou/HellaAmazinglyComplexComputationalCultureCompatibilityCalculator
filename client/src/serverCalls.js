@@ -7,7 +7,8 @@ var routes = {
     twitterProfile: '/analysis',
     analyze: '/analyze/',
     user: '/useranalyses',
-    checkLoggedIn: '/LoggedIn'
+    checkLoggedIn: '/LoggedIn',
+    userData: '/userData'
 }
 
 const serverPost = (routeName, message) => {

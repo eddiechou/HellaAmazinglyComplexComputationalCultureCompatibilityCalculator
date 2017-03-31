@@ -25,18 +25,23 @@ var analyzeProfile = function(req, res) {
           context: req.body.context,
           private: req.body.private,
           userId: req.user ? req.user.userEmail : null
-        }
+        };
+
         parseProfile(parseParams, profile)
           .then(function(analysisId) {
-            // Once all traits are saved into the db, 
+            
+            res.redirect('/analyses/' + analysisId);
+            // Once all traits are saved into the db,
             // Recreate the twitterProblem object and re-write twitterProblem.json
-            tradeoffHelpers.writeProblemJSON()
-            .then(() => {
-              res.redirect(301, '/analyses/' + analysisId);
-            });
-          }); 
-      });
-  }
+            
+            // This set timeout prevents writeProblemJSON from messing up the response object.
+            // Without the setTimeout, we get ERR_CONTENT_LENGTH_MISMATCH
+            setTimeout(function() {
+              tradeoffHelpers.writeProblemJSON();
+            }, 5000);
+          });
+      }); 
+  };
 
   if (req.body.context === 'twitter') {
     Analysis.findOne({ person: req.body.name }, function(err, analysis) {

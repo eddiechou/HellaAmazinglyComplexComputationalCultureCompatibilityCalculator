@@ -1,6 +1,7 @@
 'use strict';
 
 import React from 'react';
+import * as s from '../serverCalls.js';
 
 export default class Profile extends React.Component {
 
@@ -9,7 +10,11 @@ export default class Profile extends React.Component {
   }
 
   componentDidMount() {
-    console.log(this.props, 'asdasdasdads');
+    if (this.props.loggedIn) {
+      s.serverGet('userData').then((response) => {
+        console.log(response);
+      })
+    }
   }
 
   render() {

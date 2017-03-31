@@ -115,7 +115,7 @@ class App extends React.Component {
           <div className="container">
             {this.state.spinner && <img id="spinner" className="header" src={"/images/spinner.gif"} />}
             <Route path="/Home" component={About}/>
-            <Route path="/Profile" component={Profile}/>
+            <Route path="/Profile" component={() => <Profile loggedIn={this.state.loggedIn} />} />
             <Route path="/TwitterSearch" component={() => <TwitterSearch toggleSpinner={this.toggleSpinner} />} />
             <Route path="/CustomForm" component={() => <CustomForm toggleSpinner={this.toggleSpinner}/>}/>
             <Route path="/Public" component={() => <Public toggleSpinner={this.toggleSpinner} />} />          

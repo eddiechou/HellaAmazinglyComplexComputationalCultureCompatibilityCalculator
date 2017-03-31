@@ -18,14 +18,12 @@ export default class Profile extends React.Component {
   componentDidMount() {
     if (this.props.loggedIn) {
       s.serverGet('userData').then(({ data }) => {
-        console.log(data);
         this.setState({
           displayName: data.displayName,
           email: data.email,
           picture: data.picture,
           username: data.username
         });
-        console.log(this.state);
       });
     }
   }

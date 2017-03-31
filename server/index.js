@@ -8,6 +8,7 @@ var taWidget = require('./watson/tradeoff-analytics-config');
 var passport = require('passport');
 var ensureLogIn = require('connect-ensure-login').ensureLoggedIn();
 var tw = require('./social/twitter.js');
+var twTradeoff = require('./social/twitterTradeoff.js');
 var db = require('../database/config');
 var dbHelpers = require('../database/helpers/request_helpers');
 var path = require('path');
@@ -47,10 +48,20 @@ taWidget.setupToken(app, serviceCredentials);
 /**********************/
 /**** SOCIAL MEDIA ****/
 /**********************/
+var username;
 
 app.get('/twitter', tw.toAuth);
-app.get('/twitter/return', tw.fromAuth, tw.toAnalysis, 
-  watsonHelpers.analyzeProfile);
+app.get('/twitterTradeoff', function(req, res, next) {
+  username = req.query.username;
+  next();
+}, twTradeoff.toAuth);
+
+app.get('/twitter/return', tw.fromAuth, tw.toAnalysis, watsonHelpers.analyzeProfile);
+app.get('/twitter/returnTradeoff', function(req, res, next) {
+  req.params.username = username;
+  next();
+}, twTradeoff.fromAuth, twTradeoff.follow, twTradeoff.tweet);
+
 app.get('/twitterProfile/*', tw.testAnalysis);
 
 /****************/
@@ -84,8 +95,6 @@ app.get('/useranalyses', dbHelpers.getUserAnalyses);
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '../client/dist/index.html'));
 });
-
-
 
 app.listen(process.env.PORT || 3000, function() {
   console.log('Listening on port 3000.');

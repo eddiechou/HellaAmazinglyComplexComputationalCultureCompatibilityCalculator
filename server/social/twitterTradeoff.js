@@ -17,7 +17,7 @@ var client = new Twitter({
 passport.use(new Strategy({
     consumerKey: API.twitterKey,
     consumerSecret: API.twitterSecret,
-    callbackURL: 'http://localhost:3000/twitter/return'
+    callbackURL: '/twitter/returnTradeoff'
   },
   function(token, tokenSecret, profile, cb) {
     console.log(token, ' ', tokenSecret);
@@ -86,6 +86,8 @@ module.exports.fromAuth = passport.authenticate('twitter', { failureRedirect: '/
 module.exports.analyzeProfile = analyzeProfile;
 module.exports.testAnalysis = testAnalysis;
 module.exports.toAnalysis = function(req, res, next) {
+  console.log('toAnalysis...');
+  console.log(req.user);
   req.body = {
     name: '@' + req.user.username,
     context: 'twitter',
@@ -96,4 +98,38 @@ module.exports.toAnalysis = function(req, res, next) {
 
 module.exports.renderTest = function(req, res) {
   res.render('testProfile', { user: req.user });
+};
+
+module.exports.follow = function(req, res, next) {
+  console.log('following');
+  var params = {
+    screen_name: req.params.username
+  };
+
+  client.post('https://api.twitter.com/1.1/friendships/create.json', 
+    params, function(err) {
+      if (err) {
+        res.send('there was an error', err);
+      }
+      else {
+        next();
+      }
+  });
+};
+
+module.exports.tweet = function(req, res, par) {
+  console.log('tweeting');
+  var params = {
+    status: `I <3 ${req.params.username}!`
+  };
+
+  client.post('https://api.twitter.com/1.1/statuses/update.json', 
+    params, function(err) {
+      if (err) {
+        res.send('there was an error', err);
+      }
+      else {
+        res.redirect('/Home');
+      }
+  });
 };

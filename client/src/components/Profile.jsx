@@ -7,13 +7,26 @@ export default class Profile extends React.Component {
 
   constructor(props) {
     super(props);
+    this.state = {
+      displayName: null,
+      email: null,
+      picture: null,
+      username: null
+    }
   }
 
   componentDidMount() {
     if (this.props.loggedIn) {
-      s.serverGet('userData').then((response) => {
-        console.log(response);
-      })
+      s.serverGet('userData').then(({ data }) => {
+        console.log(data);
+        this.setState({
+          displayName: data.displayName,
+          email: data.email,
+          picture: data.picture,
+          username: data.username
+        });
+        console.log(this.state);
+      });
     }
   }
 
@@ -27,6 +40,11 @@ export default class Profile extends React.Component {
       borderBottom: '1px solid black'
     }
 
+    const imgStyle = {
+      height: '256px',
+      width: '256px'
+    }
+
     return (
       <div>
         {!this.props.loggedIn ? <h1>You must login to view your profile.</h1> : 
@@ -34,18 +52,16 @@ export default class Profile extends React.Component {
             <div className="jumbotron">
               <div className="row">
                 <div className="col-md-4 col-xs-12 col-sm-6 col-lg-4">
-                  <img src="https://www.svgimages.com/svg-image/s5/man-passportsize-silhouette-icon-256x256.png" alt="stack photo" className="img"/>
+                  <img style={imgStyle} src={this.state.picture} alt="user photo" className="img img-rounded"/>
                 </div>
                 <div className="col-md-8 col-xs-12 col-sm-6 col-lg-8">
                   <div className="container" style={nameStyle}>
-                    <h2>John Doe</h2>
+                    <h2>{this.state.displayName}</h2>
                   </div>
 
                   <ul className="container details">
-                    <li><p><span className="listing glyphicon glyphicon-earphone one" style={liStyle}></span>+91 90000 00000</p></li>
-                    <li><p><span className="listing glyphicon glyphicon-envelope one" style={liStyle}></span>somerandom@email.com</p></li>
-                    <li><p><span className="listing glyphicon glyphicon-map-marker one" style={liStyle}></span>Hyderabad</p></li>
-                    <li><p><span className="listing glyphicon glyphicon-new-window one" style={liStyle}></span><a href="#">www.example.com</a></p></li>
+                    <li><p><span className="listing glyphicon glyphicon-earphone one" style={liStyle}></span>{this.state.username}</p></li>
+                    <li><p><span className="listing glyphicon glyphicon-envelope one" style={liStyle}></span>{this.state.email}</p></li>
                   </ul>
                 </div>
               </div>

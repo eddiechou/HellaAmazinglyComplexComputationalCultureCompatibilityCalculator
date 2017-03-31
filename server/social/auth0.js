@@ -19,6 +19,8 @@ var strategy = new Auth0Strategy({
     // route to specific helper func based on login provider
     let userData = formatUserData[profile.provider](profile);
 
+    console.log(profile);
+
     dbHelpers.findOrCreateUser(userData)
     .then((response) => {
       console.log(response);

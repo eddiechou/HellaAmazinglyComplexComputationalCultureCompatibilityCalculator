@@ -47,7 +47,7 @@ class App extends React.Component {
       };
 
       return t;
-  }(document, "script", "twitter-wjs"));
+    }(document, "script", "twitter-wjs"));
   }
 
   componentDidMount() {
@@ -131,7 +131,7 @@ class App extends React.Component {
 
             </div>
           </nav>
-          
+
           <div className="container">
             {this.state.spinner && <img id="spinner" className="header" src={"/images/spinner.gif"} />}
             <Route path="/Home" component={About}/>

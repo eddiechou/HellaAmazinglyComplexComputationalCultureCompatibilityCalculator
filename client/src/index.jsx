@@ -11,6 +11,7 @@ import TradeoffTwitter from './components/TradeoffTwitter.jsx';
 import TradeoffResumes from './components/TradeoffResumes.jsx';
 import TwitterSearch from './components/TwitterSearch.jsx';
 import CustomForm from './components/CustomForm.jsx';
+import Profile from './components/Profile.jsx';
 import * as s from './serverCalls.js';
 import { BrowserRouter as Router, Route, Link, Redirect } from 'react-router-dom';
 
@@ -59,6 +60,7 @@ class App extends React.Component {
               </div>
               <div id="navbar" className="navbar-collaspe">
                 <ul className="nav navbar-nav">
+
                   <li className="dropdown">
                   <a href="#" className="dropdown-toggle" data-toggle="dropdown" 
                     role="button" aria-haspopup="true" aria-expanded="false">new analysis &nbsp;
@@ -70,13 +72,35 @@ class App extends React.Component {
                       <li><Link to="/CustomForm">custom text</Link></li>
                     </ul> 
                   </li>
-                  <li><Link to="/User">saved analyses</Link></li>
-                  <li><Link to="/Public">browse analyses</Link></li>
-                  <li><Link to="/TradeoffTwitter">search twitter personalities</Link></li>
-                  <li><Link to="/TradeoffResumes">search résumé personalities</Link></li>
+
+                  <li className="dropdown">
+                    <a href="#" className="dropdown-toggle" data-toggle="dropdown" 
+                      role="button" aria-haspopup="true" aria-expanded="false">saved analyses &nbsp;
+                        <span className="caret"></span>
+                    </a>
+                      <ul className="dropdown-menu">
+                        <li><Link to="/User">my saved analyses</Link></li>
+                        <li><Link to="/Public">browse public analyses</Link></li>
+                      </ul> 
+                  </li>
+
+                  <li className="dropdown">
+                    <a href="#" className="dropdown-toggle" data-toggle="dropdown" 
+                      role="button" aria-haspopup="true" aria-expanded="false">personality search &nbsp;
+                        <span className="caret"></span>
+                    </a>
+                      <ul className="dropdown-menu">
+                        <li><Link to="/TradeoffTwitter">search twitter personalities</Link></li>
+                        <li><Link to="/TradeoffResumes">search résumé personalities</Link></li>
+                      </ul> 
+                  </li>
+
                 </ul>
+
+
                 <ul className="nav navbar-nav navbar-right">
                   {!this.state.loggedIn && <li><a href="/AuthLogin">log in</a></li> }
+                  {this.state.loggedIn && <li><a href='/Profile'>profile</a></li> }
                   {this.state.loggedIn && <li><a href='/AuthLogout'>logout</a></li> }
                 <li><div className="credit-photos">
                   powered by: 
@@ -91,6 +115,7 @@ class App extends React.Component {
           <div className="container">
             {this.state.spinner && <img id="spinner" className="header" src={"/images/spinner.gif"} />}
             <Route path="/Home" component={About}/>
+            <Route path="/Profile" component={Profile}/>
             <Route path="/TwitterSearch" component={() => <TwitterSearch toggleSpinner={this.toggleSpinner} />} />
             <Route path="/CustomForm" component={() => <CustomForm toggleSpinner={this.toggleSpinner}/>}/>
             <Route path="/Public" component={() => <Public toggleSpinner={this.toggleSpinner} />} />          

@@ -14,39 +14,12 @@ module.exports = {
     }
   },
 
-  googleUserData: (profile) => {
-    return {
-      username: profile.nickname,
-      displayName: profile.displayName,
-      email: profile.emails[0].value,
-      picture: profile.picture
-    }
-  },  
-
-  linkedinUserData: (profile) => {
-    return {
-      username: profile.nickname,
-      displayName: profile.displayName,
-      email: profile.emails[0].value,
-      picture: profile.picture
-    }
-  },
-
-  auth0UserData: (profile) => {
-    return {
-      username: profile.nickname,
-      displayName: profile.displayName,
-      email: profile.emails[0].value,
-      picture: profile.picture
-    }
-  },
-
-  facebookUserData: (profile) => {
+  sharedFormatUserData: (profile) => {
     return {
       username: profile.nickname,
       displayName: profile.displayName,
       email: profile.emails ? profile.emails[0].value : profile.id,
-      picture: profile._json.picture_large
+      picture: profile.picture
     }
   },
 

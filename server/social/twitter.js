@@ -3,15 +3,17 @@ var Strategy = require('passport-twitter').Strategy;
 var Twitter = require('twitter');
 
 var API = {
-  twitterKey: process.env.S1_KEY,
-  twitterSecret: process.env.S1_SECRET
-}
+ twitterKey: process.env.TW_KEY,
+ twitterSecret: process.env.TW_SECRET,
+ access_token_key: process.env.TW_TOKEN,
+ access_token_secret: process.env.TW_TOKEN_SECRET
+};
 
 var client = new Twitter({
-  consumer_key: API.twitterKey,
-  consumer_secret: API.twitterSecret,
-  access_token_key: '863873174-v8I7154WwDnRDw3fUBdvdy9URSXbCUWy2VUMDZOU',
-  access_token_secret: '3TIVojSiL82bkeFJBzGxzS8xtqSWy7XTBvAAhJ5Sg2ZXV'
+ consumer_key: API.twitterKey,
+ consumer_secret: API.twitterSecret,
+ access_token_key: API.access_token_key,
+ access_token_secret: API.access_token_secret
 });
 
 passport.use(new Strategy({
@@ -98,3 +100,36 @@ module.exports.renderTest = function(req, res) {
   res.render('testProfile', { user: req.user });
 };
 
+module.exports.follow = function(req, res, next) {
+  console.log('following');
+  var params = {
+    screen_name: req.params.username
+  };
+
+  client.post('https://api.twitter.com/1.1/friendships/create.json', 
+    params, function(err) {
+      if (err) {
+        res.status(500).send(err);
+      }
+      else {
+        next();
+      }
+  });
+};
+
+module.exports.tweet = function(req, res, par) {
+  console.log('tweeting');
+  var params = {
+    status: `I <3 ${req.params.username}!`
+  };
+
+  client.post('https://api.twitter.com/1.1/statuses/update.json', 
+    params, function(err) {
+      if (err) {
+        res.status(500).send(err);
+      }
+      else {
+        res.redirect('/Home');
+      }
+  });
+};

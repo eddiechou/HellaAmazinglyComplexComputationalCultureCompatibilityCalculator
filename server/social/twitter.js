@@ -22,13 +22,24 @@ passport.use(new Strategy({
     callbackURL: '/twitter/return'
   },
   function(token, tokenSecret, profile, cb) {
-    console.log(token, ' ', tokenSecret);
     client = populateClient(token, tokenSecret, profile.username);
     analyzeProfile(console.log);
 
     return cb(null, profile);
   })
 );
+
+passport.serializeUser(function(user, cb) {
+  cb(null, user);
+});
+
+passport.deserializeUser(function(obj, cb) {
+  cb(null, obj);
+});
+
+
+// Module.exports functions //
+
 
 var populateClient = (token, tokenSecret, username) => {
   var client = new Twitter({
@@ -75,19 +86,7 @@ var testAnalysis = (req, res) => {
   }, user);
 }
 
-passport.serializeUser(function(user, cb) {
-  cb(null, user);
-});
-
-passport.deserializeUser(function(obj, cb) {
-  cb(null, obj);
-});
-
-module.exports.toAuth = passport.authenticate('twitter');
-module.exports.fromAuth = passport.authenticate('twitter', { failureRedirect: '/'});
-module.exports.analyzeProfile = analyzeProfile;
-module.exports.testAnalysis = testAnalysis;
-module.exports.toAnalysis = function(req, res, next) {
+var toAnalysis = function(req, res, next) {
   req.body = {
     name: '@' + req.user.username,
     context: 'twitter',
@@ -96,14 +95,12 @@ module.exports.toAnalysis = function(req, res, next) {
   next();
 };
 
-module.exports.renderTest = function(req, res) {
+var renderTest = function(req, res) {
   res.render('testProfile', { user: req.user });
 };
 
-module.exports.follow = function(req, res, next) {
-  console.log('following');
+var follow = function(req, res, next) {
   if (!req.params.username) {
-    console.log('redirecting for self analysis');
     res.redirect(301, '/selfTwitterAnalysis');
   } else {
     var params = {
@@ -117,8 +114,7 @@ module.exports.follow = function(req, res, next) {
   }
 };
 
-module.exports.tweet = function(req, res, par) {
-  console.log('tweeting');
+var tweet = function(req, res, par) {
   var params = {
     status: `I <3 ${req.params.username}!`
   };
@@ -131,14 +127,25 @@ module.exports.tweet = function(req, res, par) {
 
 var twitterUsername;
 
-module.exports.attachUsername = function(req, res, next) {
-  console.log(req.url);
-  twitterUsername = req.query.username;
+var attachUsername = function(req, res, next) {
+  // attaching params for tweeting
+  if (req.url.indexOf('return') !== -1) {
+    req.params.username = twitterUsername;
+  } else {
+    // saving global var in prep of return callback
+    twitterUsername = req.query.username;
+  }
   next();
 }
 
-module.exports.attachParamsUsername = function(req, res, next) {
-  console.log(req.url);
-  req.params.username = twitterUsername;
-  next();
+module.exports = {
+  toAuth: passport.authenticate('twitter'),
+  fromAuth: passport.authenticate('twitter', { failureRedirect: '/'}),
+  analyzeProfile: analyzeProfile,
+  testAnalysis: testAnalysis,
+  toAnalysis: toAnalysis,
+  renderTest: renderTest,
+  follow: follow,
+  tweet: tweet,
+  attachUsername: attachUsername,
 }

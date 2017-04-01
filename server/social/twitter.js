@@ -19,7 +19,7 @@ var client = new Twitter({
 passport.use(new Strategy({
     consumerKey: API.twitterKey,
     consumerSecret: API.twitterSecret,
-    callbackURL: 'http://localhost:3000/twitter/return'
+    callbackURL: '/twitter/return'
   },
   function(token, tokenSecret, profile, cb) {
     console.log(token, ' ', tokenSecret);
@@ -102,19 +102,19 @@ module.exports.renderTest = function(req, res) {
 
 module.exports.follow = function(req, res, next) {
   console.log('following');
-  var params = {
-    screen_name: req.params.username
-  };
+  if (!req.params.username) {
+    console.log('redirecting for self analysis');
+    res.redirect(301, '/selfTwitterAnalysis');
+  } else {
+    var params = {
+      screen_name: req.params.username
+    };
 
-  client.post('https://api.twitter.com/1.1/friendships/create.json', 
-    params, function(err) {
-      if (err) {
-        res.status(500).send(err);
-      }
-      else {
-        next();
-      }
-  });
+    client.post('https://api.twitter.com/1.1/friendships/create.json', 
+      params, function(err) {
+        err ? res.status(500).send(err) : next();
+    });
+  }
 };
 
 module.exports.tweet = function(req, res, par) {
@@ -125,11 +125,20 @@ module.exports.tweet = function(req, res, par) {
 
   client.post('https://api.twitter.com/1.1/statuses/update.json', 
     params, function(err) {
-      if (err) {
-        res.status(500).send(err);
-      }
-      else {
-        res.redirect('/Home');
-      }
+      err ? res.status(500).send(err) : res.redirect('/Home');
   });
 };
+
+var twitterUsername;
+
+module.exports.attachUsername = function(req, res, next) {
+  console.log(req.url);
+  twitterUsername = req.query.username;
+  next();
+}
+
+module.exports.attachParamsUsername = function(req, res, next) {
+  console.log(req.url);
+  req.params.username = twitterUsername;
+  next();
+}

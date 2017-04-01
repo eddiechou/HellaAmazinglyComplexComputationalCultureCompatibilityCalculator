@@ -47,17 +47,10 @@ taWidget.setupToken(app, serviceCredentials);
 /**********************/
 /**** SOCIAL MEDIA ****/
 /**********************/
-var username;
 
-app.get('/twitter', function(req, res, next) {
-  username = req.query.username;
-  next();
-}, tw.toAuth);
-app.get('/twitter/return', function(req, res, next) {
-  req.params.username = username;
-  next();
-}, tw.fromAuth, tw.follow, tw.tweet);
-// app.get('/twitter/return', tw.fromAuth, tw.toAnalysis, watsonHelpers.analyzeProfile);
+app.get('/selfTwitterAnalysis', tw.toAnalysis, watsonHelpers.analyzeProfile);
+app.get('/twitter', tw.attachUsername, tw.toAuth);
+app.get('/twitter/return', tw.attachParamsUsername, tw.fromAuth, tw.follow, tw.tweet);
 app.get('/twitterProfile/*', tw.testAnalysis);
 
 /****************/
@@ -71,13 +64,9 @@ app.post('/analysis', watsonHelpers.analyzeProfile);
 /****************/
 
 app.get('/AuthLogin', Auth0Helpers.renderLoginWidget);
-
 app.get('/AuthLogout', Auth0Helpers.logout);
-
 app.get('/LoggedIn', Auth0Helpers.isLoggedIn);
-
 app.get('/callback', Auth0Helpers.pAuth, Auth0Helpers.successRedirect);
-
 app.get('/userData', Auth0Helpers.getUserData);
 
 /****************/

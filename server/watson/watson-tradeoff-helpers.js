@@ -1,5 +1,6 @@
 var Analysis = require('../../database/models/analyses');
 var AnalysesTrait = require('../../database/models/analyses_traits');
+var Problem = require('../../database/models/problem');
 // var tradeoff = require('./tradeoff');
 var fs = require('fs');
 
@@ -203,18 +204,41 @@ var writeProblemJSON = function() {
   return new Promise((resolve, reject) => {
     createProblemObject()
     .then(function(problemObj) {
-      console.log('before writefile');
-      var filename = './client/dist/twitterProblem.json';
-      fs.writeFile(filename, JSON.stringify(problemObj), (err) => {
+      console.log('before writing to database');
+
+      /* Saving to database version */
+      // If a problem already exists in the database, update it
+      Problem.findOneAndUpdate({}, {problem: problemObj}, { upsert: true }, function(err, doc) {
         if (err) {
-          reject();
-          throw err;
+          return console.log('error finding one and updating');
         }
-        console.log('The file ' + filename + ' has been saved!');
-        resolve();
+        console.log('problem succesfully saved to database');
       });
+
+      
+
+      /* Saving to file version */
+      // var filename = './client/dist/twitterProblem.json';
+      // fs.writeFile(filename, JSON.stringify(problemObj), (err) => {
+      //   if (err) {
+      //     reject();
+      //     throw err;
+      //   }
+      //   console.log('The file ' + filename + ' has been saved!');
+      //   resolve();
+      // });
     });
   });
 };
 
+var getProblemJSON = function(req, res) {
+  Problem.findOne({}, function(err, problem) {
+    if (err) {
+      console.log(err);
+    }
+    res.json(problem);
+  });
+};
+
 module.exports.writeProblemJSON = writeProblemJSON;
+module.exports.getProblemJSON = getProblemJSON;

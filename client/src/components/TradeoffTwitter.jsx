@@ -22,6 +22,8 @@ export default class TradeoffTwitter extends React.Component {
         // ...and pass it to the client
         taClient.show(data);
       });
+
+      // TODO (Eddie): Make call to our server API to grab the JSON object from the database
         
       // subscribe to events
       taClient.subscribe('onError', function (error) {

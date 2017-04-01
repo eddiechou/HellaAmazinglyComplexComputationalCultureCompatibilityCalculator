@@ -1,6 +1,6 @@
 var Analysis = require('../../database/models/analyses');
 var AnalysesTrait = require('../../database/models/analyses_traits');
-var tradeoff = require('./tradeoff');
+// var tradeoff = require('./tradeoff');
 var fs = require('fs');
 
 // Example options array

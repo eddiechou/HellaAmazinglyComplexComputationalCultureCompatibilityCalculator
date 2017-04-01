@@ -9,6 +9,7 @@ var analysisId;
 
 var analyzeProfile = function(req, res) {
   var analyze = function(text) {
+    console.log('in analyze');
     var params = {
       content_items: [{ content: text }],
       // consumption_preferences: true,
@@ -33,7 +34,7 @@ var analyzeProfile = function(req, res) {
             res.redirect('/analyses/' + analysisId);
             // Once all traits are saved into the db,
             // Recreate the twitterProblem object and re-write twitterProblem.json
-            
+            console.log('in parseProfile');
             // This set timeout prevents writeProblemJSON from messing up the response object.
             // Without the setTimeout, we get ERR_CONTENT_LENGTH_MISMATCH
             setTimeout(function() {
@@ -51,6 +52,7 @@ var analyzeProfile = function(req, res) {
       if (analysis) {
         res.redirect(301, '/analyses/' + analysis.id);
       } else {
+        console.log('didnt find Analysis');
         tw.analyzeProfile(req.body.name.slice(1))
           .then(function(tweets) {
             analyze(tweets);

@@ -19,14 +19,11 @@ var strategy = new Auth0Strategy({
     callbackURL:  '/callback'
   }, function(accessToken, refreshToken, extraParams, profile, done) {
 
-    console.log(profile);
-
     // route to specific helper func based on login provider
     let userData = formatUserData[profile.provider](profile);
 
     dbHelpers.findOrCreateUser(userData)
     .then((response) => {
-      console.log(response);
       return done(null, profile);
     })
     .catch((err) => {

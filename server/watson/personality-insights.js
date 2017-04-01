@@ -26,6 +26,7 @@ const personalityInsights = new PersonalityInsightsV3({
 });
 
 const getProfile = (params) =>
+console.log(params, '---------------------------------------------------------------');
   new Promise((resolve, reject) => {
     if (params.language) {
       params.headers = {

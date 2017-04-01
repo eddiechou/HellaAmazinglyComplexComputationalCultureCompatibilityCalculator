@@ -2,14 +2,15 @@ import passport from 'passport';
 import dbHelpers from '../../database/helpers/request_helpers';
 
 const formatUserData = {
-  auth0: dbHelpers.auth0UserData,
+  auth0: dbHelpers.sharedFormatUserData,
   github: dbHelpers.githubUserData,
-  facebook: dbHelpers.facebookUserData,
-  'google-oauth2': dbHelpers.googleUserData,
-  linkedin: dbHelpers.linkedinUserData
+  facebook: dbHelpers.sharedFormatUserData,
+  'google-oauth2': dbHelpers.sharedFormatUserData,
+  linkedin: dbHelpers.sharedFormatUserData,
+  twitter: dbHelpers.sharedFormatUserData
 }
 
-const providers = ['auth0', 'facebook', 'google-oauth2', 'linkedin'];
+const providers = ['auth0', 'facebook', 'google-oauth2', 'linkedin', 'twitter'];
 
 exports.isLoggedIn = (req, res) => {
   if (req.user) {

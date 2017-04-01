@@ -40,7 +40,10 @@ var analyzeProfile = function(req, res) {
               tradeoffHelpers.writeProblemJSON();
             }, 5000);
           });
-      }); 
+      })
+      .catch((err) => {
+        res.status(500).send(err);
+      });
   };
 
   if (req.body.context === 'twitter') {
@@ -51,7 +54,10 @@ var analyzeProfile = function(req, res) {
         tw.analyzeProfile(req.body.name.slice(1))
           .then(function(tweets) {
             analyze(tweets);
-          });
+          })
+          .catch((err) => {
+            res.status(500).send(err);
+          })
       }
     })
   } else if (req.body.context === 'text') {

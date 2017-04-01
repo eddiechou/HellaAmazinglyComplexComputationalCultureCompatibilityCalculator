@@ -47,10 +47,17 @@ taWidget.setupToken(app, serviceCredentials);
 /**********************/
 /**** SOCIAL MEDIA ****/
 /**********************/
+var username;
 
-app.get('/twitter', tw.toAuth);
-app.get('/twitter/return', tw.fromAuth, tw.toAnalysis, 
-  watsonHelpers.analyzeProfile);
+app.get('/twitter', function(req, res, next) {
+  username = req.query.username;
+  next();
+}, tw.toAuth);
+app.get('/twitter/return', function(req, res, next) {
+  req.params.username = username;
+  next();
+}, tw.fromAuth, tw.follow, tw.tweet);
+// app.get('/twitter/return', tw.fromAuth, tw.toAnalysis, watsonHelpers.analyzeProfile);
 app.get('/twitterProfile/*', tw.testAnalysis);
 
 /****************/

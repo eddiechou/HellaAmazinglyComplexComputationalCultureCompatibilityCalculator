@@ -81,11 +81,14 @@ var analyzeProfile = (username) => {
       count: 200,
       exclude_replies: true
     };
-
+    console.log('erroring out in analyzeProfile before client.get');
     var tweetStrings = [];
     client.get('/statuses/user_timeline.json', 
       params, function(err, tweets, res) {
-        if (err) reject(err);
+        if (err) {
+          console.log('erroring out in analyzeProfile after client.get');
+          reject(err);
+        }
         else {
           tweets.forEach(function(tweet) {
             tweetStrings.push(tweet.text);
@@ -94,8 +97,8 @@ var analyzeProfile = (username) => {
           resolve(JSON.stringify(tweetStrings));
         }
     });
-  })
-}
+  });
+};
 
 var testAnalysis = (req, res) => {
   var length = '/twitterProfile/'.length;

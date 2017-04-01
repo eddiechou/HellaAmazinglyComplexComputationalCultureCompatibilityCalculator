@@ -3,17 +3,17 @@ var Strategy = require('passport-twitter').Strategy;
 var Twitter = require('twitter');
 
 var API = {
- twitterKey: process.env.TW_KEY,
- twitterSecret: process.env.TW_SECRET,
- access_token_key: process.env.TW_TOKEN,
- access_token_secret: process.env.TW_TOKEN_SECRET
-};
+  twitterKey: process.env.TW_KEY,
+  twitterSecret: process.env.TW_SECRET,
+  access_token_key: process.env.TW_TOKEN,
+  access_token_secret: process.env.TW_TOKEN_SECRET
+}
 
 var client = new Twitter({
- consumer_key: API.twitterKey,
- consumer_secret: API.twitterSecret,
- access_token_key: API.access_token_key,
- access_token_secret: API.access_token_secret
+  consumer_key: API.twitterKey,
+  consumer_secret: API.twitterSecret,
+  access_token_key: API.access_token_key,
+  access_token_secret: API.access_token_secret
 });
 
 if (process.env.NODE_ENV === 'production') {

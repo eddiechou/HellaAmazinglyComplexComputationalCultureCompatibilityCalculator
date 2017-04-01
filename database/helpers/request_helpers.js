@@ -18,7 +18,16 @@ module.exports = {
     return {
       username: profile.nickname,
       displayName: profile.displayName,
-      email: profile.emails[0].value.email,
+      email: profile.emails[0].value,
+      picture: profile.picture
+    }
+  },  
+
+  linkedinUserData: (profile) => {
+    return {
+      username: profile.nickname,
+      displayName: profile.displayName,
+      email: profile.emails[0].value,
       picture: profile.picture
     }
   },

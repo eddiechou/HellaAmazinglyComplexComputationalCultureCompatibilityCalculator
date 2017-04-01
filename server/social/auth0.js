@@ -6,7 +6,7 @@ const formatUserData = {
   auth0: dbHelpers.auth0UserData,
   github: dbHelpers.githubUserData,
   facebook: dbHelpers.facebookUserData,
-  google: dbHelpers.googleUserData,
+  'google-oauth2': dbHelpers.googleUserData,
   linkedin: dbHelpers.linkedinUserData
 }
 

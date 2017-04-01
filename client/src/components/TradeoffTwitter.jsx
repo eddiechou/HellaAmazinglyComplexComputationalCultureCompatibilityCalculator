@@ -18,13 +18,19 @@ export default class TradeoffTwitter extends React.Component {
       
       console.log('Starting TA Widget...');
       // Upon success, load the problem json...
-      $.getJSON('./twitterProblem.json', function(data) {
-        // ...and pass it to the client
-        taClient.show(data);
-      });
+      // $.getJSON('./twitterProblem.json', function(data) {
+      //   // ...and pass it to the client
+      //   taClient.show(data);
+      // });
 
-      // TODO (Eddie): Make call to our server API to grab the JSON object from the database
-        
+      // Make call to our our server API to grab the JSON object from the database
+      $.get('/problem', 
+        {dataType: 'json'},
+        function(data) {
+          console.log('got problem obj from server (db): ', data);
+          taClient.show(data);
+        });
+
       // subscribe to events
       taClient.subscribe('onError', function (error) {
         console.log('TA Widget Sent Error: ' + error);

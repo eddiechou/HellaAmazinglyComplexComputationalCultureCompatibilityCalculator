@@ -236,7 +236,7 @@ var getProblemJSON = function(req, res) {
     if (err) {
       console.log(err);
     }
-    res.json(problem);
+    res.json(problem.problem);
   });
 };
 

@@ -8,7 +8,6 @@ var tradeoffHelpers = require('./watson-tradeoff-helpers');
 var analysisId;
 
 var analyzeProfile = function(req, res) {
-  console.log('route here');
   var analyze = function(text) {
     var params = {
       content_items: [{ content: text }],

@@ -6,7 +6,8 @@ const formatUserData = {
   auth0: dbHelpers.auth0UserData,
   github: dbHelpers.githubUserData,
   facebook: dbHelpers.facebookUserData,
-  google: dbHelpers.googleUserData
+  google: dbHelpers.googleUserData,
+  linkedin: dbHelpers.linkedinUserData
 }
 
 // Configure Passport to use Auth0
@@ -16,6 +17,8 @@ var strategy = new Auth0Strategy({
     clientSecret: process.env.AUTH0_CLIENT_SECRET,
     callbackURL:  '/callback'
   }, function(accessToken, refreshToken, extraParams, profile, done) {
+
+    console.log(profile);
 
     // route to specific helper func based on login provider
     let userData = formatUserData[profile.provider](profile);

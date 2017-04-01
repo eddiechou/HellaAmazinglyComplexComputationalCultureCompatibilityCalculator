@@ -4,7 +4,9 @@ import dbHelpers from '../../database/helpers/request_helpers';
 const formatUserData = {
   auth0: dbHelpers.auth0UserData,
   github: dbHelpers.githubUserData,
-  facebook: dbHelpers.facebookUserData
+  facebook: dbHelpers.facebookUserData,
+  google: dbHelpers.googleUserData,
+  linkedin: dbHelpers.linkedinUserData
 }
 
 exports.isLoggedIn = (req, res) => {
@@ -12,7 +14,7 @@ exports.isLoggedIn = (req, res) => {
     let email, provider = req.user.provider;
     if (provider === 'github') {
       email = req.user.emails[0].value.email;
-    } else if (req.user.emails && provider === 'facebook' || provider === 'auth0') {
+    } else if (req.user.emails && provider === 'facebook' || provider === 'auth0' || provider === 'linkedin') {
       email = req.user.emails[0].value;
     } else if (provider === 'facebook') {
       email = req.user.id;

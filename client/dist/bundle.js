@@ -29070,7 +29070,7 @@ var TradeoffTwitter = function (_React$Component) {
 
         console.log('Starting TA Widget...');
         // Upon success, load the problem json...
-        $.getJSON('https://hella-amazing-ccccc.herokuapp.com/client/dist/twitterProblem.json', function (data) {
+        $.getJSON('./twitterProblem.json', function (data) {
           // ...and pass it to the client
           taClient.show(data);
         });
@@ -29082,7 +29082,7 @@ var TradeoffTwitter = function (_React$Component) {
 
         taClient.subscribe('doneClicked', function (op) {
           console.log('final decision is ' + op.name);
-          window.location.href = '/twitter?username=' + op.name;
+          window.location.href = '/twitterTradeoff?username=' + op.name;
         });
 
         taClient.subscribe('compareClicked', function (ops) {

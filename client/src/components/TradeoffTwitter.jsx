@@ -15,10 +15,10 @@ export default class TradeoffTwitter extends React.Component {
       
     // Start the client
     taClient.start(function(){
-
+      
       console.log('Starting TA Widget...');
       // Upon success, load the problem json...
-      $.getJSON('https://hella-amazing-ccccc.herokuapp.com/client/dist/twitterProblem.json', function(data) {
+      $.getJSON('./twitterProblem.json', function(data) {
         // ...and pass it to the client
         taClient.show(data);
       });
@@ -30,7 +30,7 @@ export default class TradeoffTwitter extends React.Component {
       
       taClient.subscribe('doneClicked', function (op) {
         console.log('final decision is ' + op.name);
-        window.location.href = `/twitter?username=${op.name}`;
+        window.location.href = `/twitterTradeoff?username=${op.name}`;
       });
       
       taClient.subscribe('compareClicked', function(ops) {

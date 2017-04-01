@@ -15,11 +15,10 @@ export default class TradeoffTwitter extends React.Component {
       
     // Start the client
     taClient.start(function(){
-      var rootPath = __dirname;
 
       console.log('Starting TA Widget...');
       // Upon success, load the problem json...
-      $.getJSON(rootPath + '/client/dist/twitterProblem.json', function(data) {
+      $.getJSON('https://hella-amazing-ccccc.herokuapp.com/client/dist/twitterProblem.json', function(data) {
         // ...and pass it to the client
         taClient.show(data);
       });

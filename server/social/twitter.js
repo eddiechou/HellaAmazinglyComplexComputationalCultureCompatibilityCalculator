@@ -88,6 +88,7 @@ var analyzeProfile = (username) => {
         if (err) {
           console.log('erroring out in analyzeProfile after client.get');
           console.log('error is: ', err);
+          console.log('S1KEY: ', process.env.S1_KEY);
           reject(err);
         }
         else {

@@ -87,6 +87,7 @@ var analyzeProfile = (username) => {
       params, function(err, tweets, res) {
         if (err) {
           console.log('erroring out in analyzeProfile after client.get');
+          console.log('error is: ', err);
           reject(err);
         }
         else {

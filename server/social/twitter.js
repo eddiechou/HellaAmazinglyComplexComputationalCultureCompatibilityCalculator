@@ -7,7 +7,7 @@ var API = {
   twitterSecret: process.env.TW_SECRET,
   access_token_key: process.env.TW_TOKEN,
   access_token_secret: process.env.TW_TOKEN_SECRET
-}
+};
 
 var client = new Twitter({
   consumer_key: API.twitterKey,
@@ -88,7 +88,7 @@ var analyzeProfile = (username) => {
         if (err) {
           console.log('erroring out in analyzeProfile after client.get');
           console.log('error is: ', err);
-          console.log('S1KEY: ', process.env.S1_KEY);
+          console.log('T1KEY: ', process.env.S1_KEY);
           reject(err);
         }
         else {

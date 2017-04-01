@@ -29082,6 +29082,7 @@ var TradeoffTwitter = function (_React$Component) {
 
         taClient.subscribe('doneClicked', function (op) {
           console.log('final decision is ' + op.name);
+          window.location.href = '/twitter?username=' + op.name;
         });
 
         taClient.subscribe('compareClicked', function (ops) {
@@ -40861,15 +40862,6 @@ var App = function (_React$Component) {
                     _react2.default.createElement(
                       'ul',
                       { className: 'dropdown-menu' },
-                      _react2.default.createElement(
-                        'li',
-                        null,
-                        _react2.default.createElement(
-                          'a',
-                          { href: '\\twitter' },
-                          'my twitter'
-                        )
-                      ),
                       _react2.default.createElement(
                         'li',
                         null,

@@ -17,6 +17,7 @@ var client = new Twitter({
 });
 
 if (process.env.NODE_ENV === 'production') {
+  console.log('in production');
   passport.use(new Strategy({
       consumerKey: API.twitterKey,
       consumerSecret: API.twitterSecret,

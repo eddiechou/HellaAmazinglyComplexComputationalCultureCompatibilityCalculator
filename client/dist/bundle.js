@@ -29018,7 +29018,7 @@ exports.default = TradeoffResumes;
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-
+/* WEBPACK VAR INJECTION */(function(__dirname) {
 
 Object.defineProperty(exports, "__esModule", {
   value: true
@@ -29067,10 +29067,11 @@ var TradeoffTwitter = function (_React$Component) {
 
       // Start the client
       taClient.start(function () {
+        var rootPath = __dirname;
 
         console.log('Starting TA Widget...');
         // Upon success, load the problem json...
-        $.getJSON('./twitterProblem.json', function (data) {
+        $.getJSON(rootPath + '/client/dist/twitterProblem.json', function (data) {
           // ...and pass it to the client
           taClient.show(data);
         });
@@ -29129,6 +29130,7 @@ var TradeoffTwitter = function (_React$Component) {
 }(_react2.default.Component);
 
 exports.default = TradeoffTwitter;
+/* WEBPACK VAR INJECTION */}.call(exports, "/"))
 
 /***/ }),
 /* 114 */

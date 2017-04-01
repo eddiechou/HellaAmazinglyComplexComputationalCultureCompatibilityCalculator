@@ -40872,6 +40872,15 @@ var App = function (_React$Component) {
                         'li',
                         null,
                         _react2.default.createElement(
+                          'a',
+                          { href: '\\twitter' },
+                          'my twitter'
+                        )
+                      ),
+                      _react2.default.createElement(
+                        'li',
+                        null,
+                        _react2.default.createElement(
                           _reactRouterDom.Link,
                           { to: '/TwitterSearch' },
                           'public twitter'
